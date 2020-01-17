@@ -1,0 +1,33 @@
+
+$t-info-bacground-image: url('./../assets/t-info-bacground-image.png');
+$default-color-with-black-background: #c8c8c8;
+
+body {
+    margin: 0;
+    padding: 0;
+    background: $t-info-bacground-image;
+    background-size: cover; 
+    font-family: myriad-pro, sans-serif;
+}
+
+#header {
+    height: 40px;
+    background: black;
+    color: $default-color-with-black-background;
+    .left-text {
+        line-height: 40px;
+        span {
+            font-size: 11px;
+            text-transform: uppercase;
+            padding-left: 23px;
+            &:hover { 
+                transition: all 0.3s;
+                color: white;
+            }
+        }   
+    }
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
