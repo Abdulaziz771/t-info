@@ -13,7 +13,7 @@ export default new Router({
         {
             path: '/auth',
             name: 'auth',
-            component: () => import('./mainLayouts/auth'),
+            component: () => import('./mainLayouts/Auth'),
             redirect: { name: 'login' },
             children: [
                 {

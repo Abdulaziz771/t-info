@@ -1,23 +1,58 @@
 
 $t-info-bacground-image: url('./../assets/t-info-bacground-image.png');
 $default-color-with-black-background: #c8c8c8;
+$brand-color: #00c8ff;
+
+.brand-color {
+    color: #00c8ff;
+}
+
+.danger {
+    color: #ff0000 !important;
+}
+
+.info-input {
+    border-radius: 10px;
+    font-size: 13px;
+    border: 1px solid #e4e2e2;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.info-button-color {
+    border-right: 10px;
+    background: $brand-color;
+    &:hover {
+        background: #04a4d0;
+    }
+    &:focus, &:active {
+        background: #0087ad;
+    }
+}
+
+.info-button-dark-color {
+    border-right: 10px;
+    background: #282828;
+}
 
 body {
     margin: 0;
     padding: 0;
-    background: $t-info-bacground-image;
-    background-size: cover; 
-    font-family: myriad-pro, sans-serif;
+    background: $t-info-bacground-image no-repeat;
+    background-size: 100%;
+    //font-family: myriad-pro, sans-serif !important;
 }
 
 #header {
     height: 40px;
     background: black;
     color: $default-color-with-black-background;
-    .left-text {
+    .header-menu {
         line-height: 40px;
         span {
-            font-size: 11px;
+            font-size: 10px;
             text-transform: uppercase;
             padding-left: 23px;
             &:hover { 
@@ -26,8 +61,123 @@ body {
             }
         }   
     }
+    .header-admin-stuff {
+        #dropdown-language {
+            margin: 0 !important;
+            .dropdown-toggle {
+                font-size: 11px;
+                padding: 12px 10px;
+                background: transparent;
+                color: $default-color-with-black-background;
+                border: none;
+                &:focus {
+                  box-shadow: none;
+                }
+                &:hover {
+                    transition: all 0.3s;
+                    color: white;
+                }
+            }
+            .dropdown-menu {
+                min-width: auto !important;
+                padding: 0;
+                margin: 0;
+                left: -6px !important;
+                li {
+                  position: absolute;
+                  top: -1px;
+                }
+                &:focus {
+                  outline: none;
+                }
+                .dropdown-item {
+                    background: black;
+                    color: $default-color-with-black-background;
+                    padding: 6px 16px;
+                    border-bottom-left-radius: 9px;
+                    border-bottom-right-radius: 9px;
+                    font-size: 11px;
+                    text-align: left;
+                    &:hover {
+                      transition: all 0.3s;
+                      color: white;
+                    }
+                }
+            }
+        }
+        .login-text-icon {
+            margin-right: 25px;
+            svg {
+                margin-right: 5px;
+                width: 11px;
+            }
+            span {
+                font-size: 11px;
+            }
+            &:hover {
+                transition: all 0.3s;
+                color: white;
+            }
+        }
+    }
 }
 
-.cursor-pointer {
-    cursor: pointer;
+#login {
+    padding-top: 30px;
+    .briefly-info {
+        .login-button {
+            .info-button-color {
+                font-size: 13px;
+                padding: 10px 36px;
+                border: none;
+            }
+        }
+        .logo-t-info {
+            padding-bottom: 20px;
+        }
+        .tel-mobile {
+            padding-bottom: 25px;
+            div:nth-child(1) {
+                font-size: 22px;
+            }
+            div:nth-child(2) {
+                font-size: 11px;
+            }
+        }
+        .text-clue {
+            padding-bottom: 35px;
+            font-size: 14px;
+        }
+    }
+    .login-component {
+        input {
+            font-size: 11px;
+            margin-bottom: 11px;
+        }
+        padding: 20px;
+        background-color: white;
+        height: auto;
+        .block-title {
+            text-transform: uppercase;
+            font-size: 16px;
+            padding-bottom: 5px
+        }
+        .registr-decription {
+            font-size: 11px;
+            color: black;
+            padding-bottom: 20px;
+            font-weight: 500;
+        }
+        .registr-button {
+            button {
+                padding: 8px 34px;
+                font-size: 13px;
+            }
+        }
+        .empty-inputs {
+            font-size: 12px;
+            text-align: center;
+            padding-top: 13px;
+        }
+    }
 }
