@@ -44,8 +44,20 @@ body {
     background-size: 100%;
     //font-family: myriad-pro, sans-serif !important;
 }
+#body {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 40px;
+  bottom: 0;
+}
 
 #header {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: 99;
     height: 40px;
     background: black;
     color: $default-color-with-black-background;
