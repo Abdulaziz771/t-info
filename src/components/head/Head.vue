@@ -4,9 +4,17 @@
           <b-row>
               <b-col cols="6" class="text-left">
                   <div class="header-menu">
-                      <span class="cursor-pointer">О НАС</span>
-                      <span class="cursor-pointer">реклама</span>
-                      <span class="cursor-pointer">добавить компанию</span>
+                      <XIcon v-if="showSidebar" @click="toggleSidebar" class="x-icon cursor-pointer"></XIcon>
+                      <MenuIcon @click="toggleSidebar" class="menu-icon-svg" v-else ></MenuIcon>
+                      <span class="menu-icon cursor-pointer">
+                          <router-link :to="{ path: 'home' }">О НАС</router-link>
+                      </span>
+                      <span class="menu-icon cursor-pointer">
+                          <router-link :to="{ path: 'home' }">реклама</router-link>
+                      </span>
+                      <span class="menu-icon cursor-pointer">
+                          <router-link :to="{ path: 'home' }">добавить компанию</router-link>
+                      </span>
                   </div>
               </b-col>
               <b-col cols="6" class="text-right">
@@ -22,25 +30,58 @@
               </b-col>
           </b-row>
       </b-container>
+      <transition name="slide-fade">
+          <Sidebar v-show="showSidebar"></Sidebar>
+      </transition>
   </div>
 </template>
 
 <script>
+
 import {
-    LockIcon
+    XIcon,
+    LockIcon,
+    MenuIcon
 } from 'vue-feather-icons';
+import Sidebar from './../sidebar/Sidebar'
+
 export default {
     name: 'head',
     data() {
         return {
-
+            showSidebar: false
         }
     },
     components: {
-        LockIcon
+        LockIcon,
+        XIcon,
+        MenuIcon,
+        Sidebar
     },
-    computed: {
-
+    methods: {
+        toggleSidebar() {
+            this.showSidebar = !this.showSidebar
+        }
     }
 }
 </script>
+
+<style scoped lang="scss">
+
+    .slide-fade-enter-active {
+        transition: all .3s ease;
+    }
+    .slide-fade-leave-active {
+        transition: all .3s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+    }
+    .slide-fade-enter, .slide-fade-leave-to
+        /* .slide-fade-leave-active до версии 2.1.8 */ {
+        transform: translateY(-100vh);
+        opacity: 0;
+    }
+
+    .menu-icon-svg {
+        display: none;
+    }
+
+</style>

@@ -15,6 +15,7 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 import router from './router'
 
 import "@/styles/global.scss"
+import "@/styles/media.scss"
 
 Vue.use(BootstrapVue)
 

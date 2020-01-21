@@ -20,6 +20,11 @@ export default new Router({
                     path: '/login',
                     name: 'login',
                     component: () => import('./authorization/Login')
+                },
+                {
+                    path: '/signin',
+                    name: 'signin',
+                    component: () => import('./authorization/Signin')
                 }
             ]
         }

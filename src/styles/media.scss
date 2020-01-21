@@ -3,3 +3,38 @@
     background-size: auto !important;
   }
 }
+
+@media all and (max-width: 991px) {
+  body {
+    background-size: auto !important;
+  }
+  #login {
+    .line-with-slogan {
+      display: none;
+    }
+  }
+}
+
+@media all and (max-width: 767px) {
+  #header {
+    .container {
+      max-width: 100% !important;
+    }
+  }
+  .briefly-org-info {
+    display: none;
+  }
+}
+
+@media all and (max-width: 577px) {
+  #header {
+    .header-menu {
+      .menu-icon-svg {
+        display: initial !important;
+      }
+      span {
+        display: none;
+      }
+    }
+  }
+}
