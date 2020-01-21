@@ -4,7 +4,7 @@
             <b-col>
                 <div class="briefly-info text-white">
                     <div class="logo-t-info">
-                        <img src="../assets/r4.png" alt="t-info">
+                        <img src="../assets/t-info.png" alt="t-info">
                     </div>
                     <div class="tel-mobile">
                         <div class="font-weight-bold">120 20 20</div>
@@ -49,11 +49,11 @@
                 </div>
             </b-col>
             <b-col>
-                <div class="slogan">
-                    <span>
-                        У нас найдется все
-                    </span>
-                    <img src="../assets/Shape-3.png" alt="slogan">
+                <div class="slogan text-right">
+                        <span class="text-center">
+                            У нас найдется все
+                        </span>
+                        <img src="../assets/line.png" alt="slogan">
                 </div>
             </b-col>
         </b-row>
