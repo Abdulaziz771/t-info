@@ -22,11 +22,21 @@ export default new Router({
                     component: () => import('./authorization/Login')
                 },
                 {
+                    path: '/login-company',
+                    name: 'login-company',
+                    component: () => import('./authorization/LoginCompany')
+                },
+                {
                     path: '/signin',
                     name: 'signin',
                     component: () => import('./authorization/Signin')
                 }
             ]
+        },
+        {
+            path: '/home',
+            name: 'home',
+            component: () => import('./mainLayouts/Home'),
         }
     ]
 });

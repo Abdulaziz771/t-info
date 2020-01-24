@@ -21,8 +21,13 @@
       max-width: 100% !important;
     }
   }
-  .briefly-org-info {
-    display: none;
+  #login {
+    .mobile-logo {
+      display: block;
+    }
+    .briefly-org-info {
+      display: none;
+    }
   }
 }
 
@@ -34,6 +39,21 @@
       }
       span {
         display: none;
+      }
+    }
+  }
+  #login {
+    padding-top: 10px;
+    .login-component {
+      div:nth-child(2) {
+        display: none;
+      }
+      input, select {
+        margin-bottom: 7px;
+      }
+      .block-title {
+        padding-bottom: 10px !important;
+        text-align: center;
       }
     }
   }

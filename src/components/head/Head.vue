@@ -21,9 +21,14 @@
                   <div class="header-admin-stuff">
                       <span class="login-text-icon cursor-pointer">
                           <LockIcon></LockIcon>
-                          <span>Войти</span>
+                            <span>
+                                <router-link :to="{ name: 'signin' }">
+                                    Войти
+                                </router-link>
+                            </span>
                       </span>
                       <b-dropdown id="dropdown-language" text="Ru" class="m-md-2">
+                          <b-dropdown-item>Uz</b-dropdown-item>
                           <b-dropdown-item>En</b-dropdown-item>
                       </b-dropdown>
                   </div>

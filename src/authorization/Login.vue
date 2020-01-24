@@ -1,9 +1,9 @@
 <template>
     <div>
         <div class="container" id="login">
-            <!--            <div class="text-center">-->
-            <!--                <img src="../assets/t-info.png" alt="t-info">-->
-            <!--            </div>-->
+            <div class="mobile-logo text-center">
+                <img src="../assets/t-info.png" alt="t-info">
+            </div>
             <b-row>
                 <b-col class="briefly-org-info">
                     <div class="briefly-info text-white">
@@ -18,18 +18,20 @@
                             Зарегестрировавшись вы будете в курсе <br> изменений в отслеживаемых <br> вами компанией
                         </div>
                         <div class="login-button">
-                            <b-button class="info-button-color">Войти в личный кабинет</b-button>
+                            <router-link :to="{ name: 'signin' }">
+                                <b-button class="info-button-color">Войти в личный кабинет</b-button>
+                            </router-link>
                         </div>
                     </div>
                 </b-col>
                 <b-col>
-                    <div class="login-component ">
+                    <div class="login-component">
                         <div class="block-title font-weight-bold brand-color">Регистрация пользователя</div>
                         <div class="registr-decription">
                             Зарегестрировавшись на нашем сайте вы получаете возможность
-                            создовать актуальный список компаний которые вас интересуют,
-                            получать на почту уведомления об изменениях в контактных данных
-                            компаний из вашего списка.
+                            создовать актуальный список компаний.<br>
+                            Чтобы зарегестрировать компанию нажмите
+                            <router-link class="brand-color cursor-pointer" :to="{ path: 'login-company' }">сюда</router-link>
                         </div>
                         <form action="">
                             <input class="info-input form-control" placeholder="Имя">
@@ -54,9 +56,9 @@
                 </b-col>
                 <b-col class="line-with-slogan">
                     <div class="slogan text-right">
-                    <span class="text-center">
-                        У нас найдется все
-                    </span>
+                        <span class="text-center">
+                            У нас найдется все
+                        </span>
                         <img src="../assets/line.png" alt="slogan">
                     </div>
                 </b-col>
@@ -69,9 +71,6 @@
 
 export default {
     name: 'login',
-    components: {
-
-    }
 }
 </script>
 

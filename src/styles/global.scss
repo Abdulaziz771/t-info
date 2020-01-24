@@ -2,6 +2,12 @@
 $t-info-bacground-image: url('./../assets/t-info-bacground-image.png');
 $default-color-with-black-background: #c8c8c8;
 $brand-color: #00c8ff;
+body {
+  margin: 0;
+  padding: 0;
+  background: $t-info-bacground-image no-repeat;
+  background-size: 100%;
+}
 
 .brand-color {
     color: #00c8ff;
@@ -15,6 +21,22 @@ $brand-color: #00c8ff;
     border-radius: 10px;
     font-size: 13px;
     border: 1px solid #e4e2e2;
+}
+
+.info-select {
+    border-radius: 10px;
+    font-size: 11px;
+    padding: 6px;
+    border: 1px solid #e4e2e2;
+    width: 130px;
+}
+
+.outline-none {
+    &:focus {
+        outline: none;
+        border: none;
+        box-shadow: none;
+    }
 }
 
 .cursor-pointer {
@@ -43,13 +65,6 @@ $brand-color: #00c8ff;
     right: 0;
     top: 40px;
     bottom: 0;
-}
-
-body {
-    margin: 0;
-    padding: 0;
-    background: $t-info-bacground-image no-repeat;
-    background-size: 100%;
 }
 
 #header {
@@ -131,6 +146,13 @@ body {
             }
             span {
                 font-size: 11px;
+                a {
+                    color: $default-color-with-black-background;
+                    &:hover {
+                        text-decoration: none;
+                        color: $default-color-with-black-background;
+                    }
+                }
             }
             &:hover {
                 transition: all 0.3s;
@@ -142,6 +164,10 @@ body {
 
 #login {
     padding-top: 30px;
+    .mobile-logo {
+        display: none;
+        padding-bottom: 10px;
+    }
     .briefly-info {
         .login-button {
             .info-button-color {
@@ -168,9 +194,14 @@ body {
         }
     }
     .login-component {
-        input {
+        input, select {
             font-size: 11px;
             margin-bottom: 11px;
+        }
+        .contact-person {
+            font-size: 11px;
+            padding-bottom: 11px;
+            font-weight: 700;
         }
         padding: 20px;
         background-color: white;
@@ -185,6 +216,12 @@ body {
             color: black;
             padding-bottom: 20px;
             font-weight: 500;
+            a {
+                &:hover {
+                    color: $brand-color;
+                    text-decoration: none;
+                }
+            }
         }
         .registr-button {
             button {
@@ -210,5 +247,217 @@ body {
             position: relative;
             top: -12px;
         }
+    }
+}
+
+#signin {
+    padding-top: 30px;
+    .mobile-logo {
+        display: none;
+        padding-bottom: 10px;
+    }
+}
+
+#home {
+    padding-top: 30px;
+    .briefly-info {
+        .home-logo {
+            padding-right: 15px;
+        }
+        .tel-mobile {
+            display: flex;
+            flex-direction: column;
+            line-height: 18px;
+            border-left: 1px solid white;
+            padding-left: 15px;
+            span:nth-child(1) {
+                font-weight: 800;
+                font-size: 20px;
+            }
+            span:nth-child(2) {
+                font-size: 11px;
+            }
+        }
+        .slogan {
+            span {
+                color: white;
+                font-size: 23px;
+                text-transform: uppercase;
+                font-family: monospace;
+                right: 30px;
+            }
+            img {
+                position: relative;
+                top: 22px;
+            }
+        }
+    }
+    .main-search-component {
+        padding-top: 40px;
+        .tabs {
+          height: 302px;
+          .tab-content {
+              .tab-pane {
+                outline: none;
+                padding: 10px;
+              }
+              .tab-pane:nth-child(2) {;
+                .popular-button {
+                  div {
+                    background: #282828;
+                    border-radius: 10px;
+                    padding: 5px 20px;
+                    cursor: pointer;
+                    width: 133px;
+                  }
+                }
+                .alphabet {
+                  span {
+                    margin-right: 11px;
+                  }
+                }
+                .view-all {
+                  span {
+                    border-bottom: 1px solid white;
+                  }
+                }
+                .popular-points {
+                  ul {
+                    li {
+                      display: inline-block;
+                      width: 200px;
+                      font-size: 12px;
+                      &:before {
+                        content: "";
+                        color: #595959;
+                        display: list-item;
+                        position: absolute;
+                      }
+                    }
+                  }
+                }
+              }
+              background-color: #00c8ff;
+              padding: 15px;
+              border-radius: 10px;
+              .search-panel {
+                  display: flex;
+                  div:nth-child(1) {
+                      width: 75px;
+                      line-height: 38px;
+                  }
+                  div:nth-child(2) {
+                      width: 76%;
+                      input {
+                          font-size: 16px;
+                          font-weight: 600;
+                      }
+                  }
+                  div:nth-child(3) {
+                      background: #282828;
+                      border-radius: 10px;
+                      padding: 5px 35px;
+                      padding-right: 45px;
+                      cursor: pointer;
+                      width: 161px;
+                      margin-left: 20px;
+                      svg {
+                          width: 20px;
+                          margin-right: 6px;
+                      }
+                      span:nth-child(2) {
+                          font-size: 16px;
+                          line-height: 26px;
+                      }
+                  }
+              }
+          }
+          .nav-tabs {
+              .nav-item {
+                  margin-bottom: -7px;
+              }
+              border: none !important;
+              .nav-link.active {
+                  background-color: #00c8ff;
+                  border: none;
+                  color: white;
+                  border-top-right-radius: 10px;
+                  border-top-left-radius: 10px;
+              }
+              .nav-link {
+                  color: white;
+                  border: none;
+                  font-size: 14px;
+                  padding-bottom: 11px;
+                  padding-left: 25px;
+                  padding-right: 25px;
+                  &:hover {
+                      border: none;
+                  }
+                  &:focus {
+                      outline: none;
+                      border: none;
+                  }
+              }
+          }
+        }
+    }
+    .home-footer {
+      height: 50vh;
+      position: absolute;
+      background: white;
+      margin-top: 20px;
+      right: 0;
+      left: 0;
+      .orgs-tab {
+        .tabs {
+          padding-top: 20px;
+          .nav-tabs {
+            border: none;
+            .nav-item {
+              a.active {
+                color: $brand-color;
+                border: 1px solid #d8d8d8;
+                border-bottom: none;
+              }
+              a {
+                color: black;
+                border: none;
+                padding: 10px 40px;
+                text-transform: uppercase;
+                font-size: 15px;
+                font-weight: 700;
+                &:focus {
+                  outline: none;
+                }
+              }
+            }
+          }
+          .tab-content {
+            border-radius: 20px;
+            padding: 10px 50px;
+            box-shadow: 0px 10px 36px -12px rgba(0,0,0,0.75);
+            .tab-pane {
+              &:focus {
+                outline: none;
+              }
+              .org {
+                padding: 10px;
+                transition: all .1s ease;
+                &:hover {
+                  color: $brand-color;
+                }
+                .org-name {
+                  font-weight: 700;
+                  text-transform: uppercase;
+                }
+                .org-category {
+                  font-size: 11px;
+                }
+              }
+            }
+          }
+        }
+      }
     }
 }
