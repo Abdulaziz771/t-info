@@ -34,6 +34,12 @@
                         <div class="registr-button text-center">
                             <b-button class="info-button-dark-color">Войти</b-button>
                         </div>
+                        <div class="have-accaunt text-center pt-3">
+                            Вы еще не зарегестрированы?
+                            <router-link :to="{ path: 'login' }">
+                                <span class="brand-color cursor-pointer">Регестрация</span>
+                            </router-link>
+                        </div>
                         <div class="empty-inputs danger">
                             Все поля необходимы для заполнения
                         </div>

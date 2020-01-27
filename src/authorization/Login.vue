@@ -27,6 +27,12 @@
                 <b-col>
                     <div class="login-component">
                         <div class="block-title font-weight-bold brand-color">Регистрация пользователя</div>
+                        <div class="text-center login-company pb-4">
+                            или<br>
+                            <router-link class="text-uppercase brand-color cursor-pointer" :to="{ name: 'login-company' }">
+                                нажмите сюда для регестрации компании
+                            </router-link>
+                        </div>
                         <div class="registr-decription">
                             Зарегестрировавшись на нашем сайте вы получаете возможность
                             создовать актуальный список компаний.<br>
@@ -48,6 +54,12 @@
                         </div>
                         <div class="registr-button text-center">
                             <b-button class="info-button-dark-color">Зарегестрироваться</b-button>
+                        </div>
+                        <div class="have-accaunt text-center pt-3">
+                            Вы уже зарегестрированы?
+                            <router-link :to="{ path: 'signin' }">
+                                <span class="brand-color cursor-pointer">Вход</span>
+                            </router-link>
                         </div>
                         <div class="empty-inputs danger">
                             Все поля необходимы для заполнения

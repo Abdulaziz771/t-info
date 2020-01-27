@@ -4,7 +4,7 @@
             <div class="briefly-info">
                 <b-row>
                     <b-col class="text-white">
-                        <img src="./../assets/t-info.png" class="home-logo float-left" alt="t-info">
+                        <img src="./../assets/t-info.png" class="home-logo" alt="t-info">
                         <span class="tel-mobile">
                             <span>
                                 120 20 20
@@ -24,13 +24,13 @@
             </div>
             <div class="main-search-component">
                 <b-tabs class="text-white">
-                    <b-tab title="Поиск">
+                    <b-tab title="Поиск" active>
                         <div class="search-panel">
                             <div class="font-weight-bold">
                                 Я ИЩУ
                             </div>
                             <div>
-                                <input class="outline-none form-control info-input" type="search">
+                                <input placeholder="Я ищу..." class="outline-none form-control info-input" type="search">
                             </div>
                             <div>
                                 <span>
@@ -42,7 +42,7 @@
                             </div>
                         </div>
                     </b-tab>
-                    <b-tab title="Котегория от А до Я" active>
+                    <b-tab title="Котегория от А до Я" >
                         <b-row>
                             <b-col class="popular-button" cols="2">
                                 <div>
@@ -73,16 +73,59 @@
                           <b-tabs>
                               <b-tab title="Новое в справочнике">
                                   <b-row class="new-orgs">
-                                    <b-col cols='4' class="org cursor-pointer" v-for="org in newOrgs" :key="org.name">
+                                    <b-col cols='4' class="org cursor-pointer" v-for="(org, index) in newOrgs" :key="index">
                                         <div class="org-name pb-1">{{ org.name }}</div>
                                         <div class="org-category">{{ org.category }}</div>
                                     </b-col>
                                   </b-row>
                               </b-tab>
-                              <b-tab title="Экстренные службы">ausdhausdhuiasdhauisdh<br>asdasd</b-tab>
+                              <b-tab title="Экстренные службы">
+                                  <b-row class="emergency-orgs">
+                                      <b-col cols='4' class="org cursor-pointer" v-for="(org, index) in emergOrgs" :key="index">
+                                          <div class="org-name pb-1">{{ org.name }}</div>
+                                          <div class="org-category">{{ org.category }}</div>
+                                      </b-col>
+                                  </b-row>
+                              </b-tab>
                           </b-tabs>
                       </b-col>
-                      <b-col cols="2"></b-col>
+                      <b-col cols="2" class="bg-dark">
+                          <div class="adds">
+
+                          </div>
+                      </b-col>
+                    </b-row>
+                </div>
+                <div class="container">
+                    <b-row class="add-org">
+                        <b-col cols="10" class="content-padding">
+                            <div class="title-add-new-org">
+                                Добавить компанию
+                            </div>
+                            <div class="add-new-org">
+                                <b-row>
+                                    <b-col class="user-type" cols="3">
+                                        <div class="select-label">Форма собственности</div>
+                                        <select class="info-select input-label w-100 form-control">
+                                            <option value="0">ЧП</option>
+                                            <option value="1">ФЛ</option>
+                                        </select>
+                                    </b-col>
+                                    <b-col class="org-name" cols="7">
+                                        <div class="input-label">Название организации</div>
+                                        <input class="info-input form-control" placeholder="Название компании">
+                                    </b-col>
+                                    <b-col cols="2" class="contnie-button-parent p-0">
+                                        <div class="contnie-button">
+                                            <span>Продолжить</span>
+                                            <ArrowRightIcon></ArrowRightIcon>
+                                        </div>
+                                    </b-col>
+                                </b-row>
+                            </div>
+                        </b-col>
+                        <b-col cols="2" class="bg-dark adds-padding">
+                        </b-col>
                     </b-row>
                 </div>
             </div>
@@ -92,6 +135,7 @@
 
 <script>
 import {
+    ArrowRightIcon,
     SearchIcon
 } from 'vue-feather-icons'
 export default {
@@ -105,7 +149,7 @@ export default {
                 { name: 'Индустрия' },
                 { name: 'Отчистка земли' },
                 { name: 'Телефоны' },
-                { name: 'Достопромечательности' },
+                { name: 'Достопромечательност' },
                 { name: 'Исторические' },
                 { name: 'Стройка инструментоа' },
                 { name: 'Индустрия' },
@@ -114,7 +158,7 @@ export default {
                 { name: 'Индустрия' },
                 { name: 'Отчистка земли' },
                 { name: 'Телефоны' },
-                { name: 'Достопромечательности' },
+                { name: 'Достопромечательнос' },
                 { name: 'Исторические' },
                 { name: 'Стройка инструментоа' },
                 { name: 'Индустрия' },
@@ -123,7 +167,7 @@ export default {
                 { name: 'Индустрия' },
                 { name: 'Отчистка земли' },
                 { name: 'Телефоны' },
-                { name: 'Достопромечательности' },
+                { name: 'Достопромечательно' },
                 { name: 'Исторические' },
                 { name: 'Стройка инструментоа' },
                 { name: 'Индустрия' },
@@ -132,7 +176,7 @@ export default {
                 { name: 'Исторические' },
                 { name: 'Стройка инструментоа' },
                 { name: 'Телефоны' },
-                { name: 'Достопромечательности' },
+                { name: 'Достопромечательн' },
                 { name: 'Исторические' },
             ],
             alphabet: [
@@ -178,11 +222,19 @@ export default {
                 { name: 'agromir', category: 'Продукты питания   Молочные продукты' },
                 { name: 'tuskish airways', category: 'Авиакассы   Авиакомпании' },
                 { name: 'гламурпродукт', category: 'Молочные продукты' }
+            ],
+            emergOrgs: [
+                { name: 'Puremilky', category: 'Продукты питания   Молочные продукты' },
+                { name: 'аэрофлот', category: 'Авиакассы   Авиакомпании' },
+                { name: 'Nestle', category: 'Продукты питания' },
+                { name: 'DOCTOR D', category: 'Медицина   Клиники' },
+                { name: 'Посольство россии', category: 'Представительства   Посольства' },
             ]
         }
     },
     components: {
-        SearchIcon
+        SearchIcon,
+        ArrowRightIcon
     }
 }
 </script>
@@ -195,8 +247,5 @@ export default {
         display: list-item;
         position: absolute;
     }
-    /*.test:nth-child(6n+1) {*/
-    /*    clear: both;*/
-    /*}*/
 </style>
 

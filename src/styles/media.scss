@@ -2,6 +2,21 @@
   body {
     background-size: auto !important;
   }
+  #home {
+    .alphabet {
+      span {
+        margin-right: 9px !important;
+        font-size: 14px;
+      }
+    }
+    .search-panel {
+      div:nth-child(3) {
+        width: auto !important;
+        padding-right: 0;
+        padding: 5px 10px !important;
+      }
+    }
+  }
 }
 
 @media all and (max-width: 991px) {
@@ -11,6 +26,49 @@
   #login {
     .line-with-slogan {
       display: none;
+    }
+  }
+  #home {
+    .main-search-component {
+      .tabs {
+        .nav-tabs {
+          display: none;
+        }
+        .tab-content  {
+          .search-panel {
+            div:nth-child(3) {
+              span:nth-child(2) {
+                display: none;
+              }
+            }
+            div:nth-child(2) {
+              width: 100% !important;
+              input::-webkit-input-placeholder {
+                color: #4f4f4f !important;
+              }
+            }
+            div:nth-child(1) {
+              display: none;
+            }
+          }
+        }
+      }
+    }
+    .add-new-org {
+      .user-type, .org-name {
+        div:nth-child(1) {
+          display: none;
+        }
+      }
+      .contnie-button {
+        span {
+          display: none;
+        }
+        svg {
+          display: block !important;
+          margin: 5px auto;
+        }
+      }
     }
   }
 }
@@ -29,6 +87,26 @@
       display: none;
     }
   }
+  #home {
+    .briefly-info {
+      div {
+        div:nth-child(1) {
+          justify-content: center;
+        }
+      }
+      .slogan {
+        display: none;
+      }
+    }
+    .main-search-component {
+      padding-top: 20px;
+      .tabs {
+        .tab-content {
+          padding: 0;
+        }
+      }
+    }
+  }
 }
 
 @media all and (max-width: 577px) {
@@ -44,15 +122,28 @@
   }
   #login {
     padding-top: 10px;
+    padding-bottom: 35px;
     .login-component {
-      div:nth-child(2) {
+      .registr-decription {
         display: none;
+      }
+      .have-accaunt {
+        display: block;
+      }
+      .login-company {
+        display: block;
+        font-size: 11px;
+      }
+      .registr-button {
+        padding-top: 10px;
+        button {
+          padding: 5px 40px;
+        }
       }
       input, select {
         margin-bottom: 7px;
       }
       .block-title {
-        padding-bottom: 10px !important;
         text-align: center;
       }
     }

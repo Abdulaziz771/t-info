@@ -211,6 +211,9 @@ body {
             font-size: 16px;
             padding-bottom: 5px
         }
+        .login-company {
+          display: none;
+        }
         .registr-decription {
             font-size: 11px;
             color: black;
@@ -228,6 +231,10 @@ body {
                 padding: 8px 34px;
                 font-size: 13px;
             }
+        }
+        .have-accaunt {
+          display: none;
+          font-size: 11px;
         }
         .empty-inputs {
             font-size: 12px;
@@ -261,8 +268,13 @@ body {
 #home {
     padding-top: 30px;
     .briefly-info {
-        .home-logo {
-            padding-right: 15px;
+        div {
+          div:nth-child(1) {
+            display: flex;
+            img {
+              padding-right: 15px;
+            }
+          }
         }
         .tel-mobile {
             display: flex;
@@ -295,7 +307,6 @@ body {
     .main-search-component {
         padding-top: 40px;
         .tabs {
-          height: 302px;
           .tab-content {
               .tab-pane {
                 outline: none;
@@ -351,6 +362,9 @@ body {
                       input {
                           font-size: 16px;
                           font-weight: 600;
+                          &::-webkit-input-placeholder {
+                            color: white;
+                          }
                       }
                   }
                   div:nth-child(3) {
@@ -403,56 +417,112 @@ body {
         }
     }
     .home-footer {
-      height: 50vh;
+      height: auto;
       position: absolute;
       background: white;
       margin-top: 20px;
       right: 0;
       left: 0;
-      .orgs-tab {
-        .tabs {
-          padding-top: 20px;
-          .nav-tabs {
-            border: none;
-            .nav-item {
-              a.active {
-                color: $brand-color;
-                border: 1px solid #d8d8d8;
-                border-bottom: none;
+      .container:nth-child(1) {
+        padding-top: 20px;
+        .orgs-tab {
+          .tabs {
+            .nav-tabs {
+              border: none;
+              .nav-item {
+                a.active {
+                  color: $brand-color;
+                  border: 1px solid #d8d8d8;
+                  border-bottom: none;
+                  border-top-right-radius: 10px;
+                  border-top-left-radius: 10px;
+                }
+                a {
+                  color: black;
+                  border: none;
+                  padding: 10px 40px;
+                  text-transform: uppercase;
+                  font-size: 15px;
+                  font-weight: 700;
+                  &:focus {
+                    outline: none;
+                  }
+                }
               }
-              a {
-                color: black;
-                border: none;
-                padding: 10px 40px;
-                text-transform: uppercase;
-                font-size: 15px;
-                font-weight: 700;
+            }
+            .tab-content {
+              border-bottom-left-radius: 20px;
+              border-bottom-right-radius: 20px;
+              border-top-right-radius: 20px;
+              padding: 10px 50px;
+              box-shadow: 0 10px 36px -12px rgba(0,0,0,0.75);
+              .tab-pane {
                 &:focus {
                   outline: none;
+                }
+                .org {
+                  padding: 10px;
+                  transition: all .1s ease;
+                  &:hover {
+                    color: $brand-color;
+                  }
+                  .org-name {
+                    font-weight: 700;
+                    text-transform: uppercase;
+                  }
+                  .org-category {
+                    font-size: 11px;
+                  }
                 }
               }
             }
           }
-          .tab-content {
-            border-radius: 20px;
-            padding: 10px 50px;
-            box-shadow: 0px 10px 36px -12px rgba(0,0,0,0.75);
-            .tab-pane {
-              &:focus {
-                outline: none;
-              }
-              .org {
-                padding: 10px;
-                transition: all .1s ease;
-                &:hover {
-                  color: $brand-color;
-                }
-                .org-name {
-                  font-weight: 700;
+        }
+      }
+      .container:nth-child(2) {
+        .add-org {
+          .content-padding {
+            padding-top: 40px;
+            padding-bottom: 50px;
+          }
+          .adds-padding {
+            margin-bottom: 50px;
+            margin-top: 15px;
+          }
+          .title-add-new-org {
+            font-size: 15px;
+            text-transform: uppercase;
+            font-weight: 700;
+            padding-bottom: 11px;
+          }
+          .add-new-org {
+            background: #00c8ff;
+            border-radius: 10px;
+            padding: 15px;
+            padding-bottom: 20px;
+            .row {
+              .user-type, .org-name {
+                div:nth-child(1) {
+                  color: white;
                   text-transform: uppercase;
+                  font-size: 10px;
+                  padding-bottom: 5px;
                 }
-                .org-category {
-                  font-size: 11px;
+              }
+              .contnie-button-parent {
+                display: flex;
+                flex-direction: column-reverse;
+                .contnie-button {
+                  color: white;
+                  background: #282828;
+                  border-radius: 10px;
+                  line-height: 35px;
+                  cursor: pointer;
+                  text-align: center;
+                  margin-right: 10px;
+                  svg {
+                    display: none;
+                  }
                 }
               }
             }
