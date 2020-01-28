@@ -8,7 +8,9 @@
                 <b-col class="briefly-org-info">
                     <div class="briefly-info text-white">
                         <div class="logo-t-info">
-                            <img src="../assets/t-info.png" alt="t-info">
+                            <router-link :to="{ name: 'home' }">
+                                <img src="../assets/t-info.png" alt="t-info">
+                            </router-link>
                         </div>
                         <div class="tel-mobile">
                             <div class="font-weight-bold">120 20 20</div>

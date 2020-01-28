@@ -2,7 +2,9 @@
     <div>
         <div class="container" id="login">
             <div class="mobile-logo text-center">
-                <img src="../assets/t-info.png" alt="t-info">
+                <router-link :to="{ name: 'home' }">
+                    <img src="../assets/t-info.png" alt="t-info">
+                </router-link>
             </div>
             <b-row>
                 <b-col class="briefly-org-info">

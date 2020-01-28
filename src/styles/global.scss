@@ -9,12 +9,20 @@ body {
   background-size: 100%;
 }
 
-.brand-color {
-    color: #00c8ff;
+.adds {
+  img {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+  }
 }
 
 .danger {
     color: #ff0000 !important;
+}
+
+.brand-color {
+  color: #00c8ff;
 }
 
 .info-input {
@@ -304,7 +312,7 @@ body {
             }
         }
     }
-    .main-search-component {
+    .search-component {
         padding-top: 40px;
         .tabs {
           .tab-content {
@@ -348,7 +356,7 @@ body {
                   }
                 }
               }
-              background-color: #00c8ff;
+              background-color: $brand-color;
               padding: 15px;
               border-radius: 10px;
               .search-panel {
@@ -377,7 +385,6 @@ body {
                       margin-left: 20px;
                       svg {
                           width: 20px;
-                          margin-right: 6px;
                       }
                       span:nth-child(2) {
                           font-size: 16px;
@@ -392,7 +399,7 @@ body {
               }
               border: none !important;
               .nav-link.active {
-                  background-color: #00c8ff;
+                  background-color: $brand-color;
                   border: none;
                   color: white;
                   border-top-right-radius: 10px;
@@ -417,7 +424,6 @@ body {
         }
     }
     .home-footer {
-      height: auto;
       position: absolute;
       background: white;
       margin-top: 20px;
@@ -466,12 +472,25 @@ body {
                   &:hover {
                     color: $brand-color;
                   }
-                  .org-name {
-                    font-weight: 700;
-                    text-transform: uppercase;
+                  .org-image {
+                    //width: 70px;
+                    //height: 70px;
+                    margin-right: 10px;
                   }
-                  .org-category {
-                    font-size: 11px;
+                  .name-category-parent {
+                    height: 80px;
+                    overflow: hidden;
+                    .org-name {
+                      font-weight: 700;
+                      text-transform: uppercase;
+                    }
+                    .org-category {
+                      font-size: 11px;
+                      margin-right: 10px;
+                      &:hover {
+                        border-bottom: 1px dotted $brand-color;
+                      }
+                    }
                   }
                 }
               }
@@ -496,7 +515,7 @@ body {
             padding-bottom: 11px;
           }
           .add-new-org {
-            background: #00c8ff;
+            background: $brand-color;
             border-radius: 10px;
             padding: 15px;
             padding-bottom: 20px;
@@ -529,5 +548,134 @@ body {
           }
         }
       }
+      .mobile-catalog {
+        background: white;
+        display: none;
+        .catalog-parent {
+          .catalog-list {
+            display: flex;
+            padding: 10px 20px;
+            .catalog-description {
+              padding-left: 15px;
+              .catalog-heading {
+                font-weight: 700;
+                font-size: 17px;
+                text-transform: uppercase;
+              }
+              div {
+                width: 250px;
+                height: auto;
+                max-height: 80px;
+                overflow: hidden;
+                .catalog-body {
+                  text-transform: capitalize;
+                  font-size: 10px;
+                  color: #8a8a8a;
+                  margin-right: 10px;
+                  &:hover {
+                    color: black;
+                    border-bottom: 1px dotted $brand-color;
+                  }
+                }
+              }
+            }
+          }
+        }
+        .mobile-section {
+          display: none;
+          margin: 10px 0;
+          div {
+            font-size: 10px;
+            text-align: center;
+            cursor: pointer;
+            padding: 6px;
+          }
+          div.active {
+            background: #282828;
+            border-radius: 10px;
+            color: white;
+            span {
+              border-bottom: none;
+            }
+          }
+          .catalog-button {
+            span {
+              border-bottom: 1px dotted $brand-color;
+              font-weight: 600;
+            }
+          }
+          .new-orgs-button {
+            span {
+              border-bottom: 1px dotted $brand-color;
+              font-weight: 600;
+            }
+          }
+          .emergancy-orgs-button {
+            span {
+              color: #212529;
+              border-bottom: 1px dotted $brand-color;
+              font-weight: 600;
+            }
+          }
+        }
+      }
     }
+}
+
+#main-header {
+  padding-top: 30px;
+  .main-search {
+    div:nth-child(2) {
+      background: $brand-color;
+      border-radius: 10px;
+      padding: 5px 15px;
+      .d-flex {
+        .search-title {
+          font-weight: 700;
+          color: white;
+          width: 60px;
+          line-height: 45px;
+          padding-left: 4px;
+        }
+        div:nth-child(2) {
+          width: 88%;
+          input {
+            font-size: 16px;
+            font-weight: 600;
+          }
+        }
+        .search-button {
+          div {
+            background: #282828;
+            border-radius: 10px;
+            cursor: pointer;
+            color: white;
+            padding: 6px 12px;
+            margin-top: 5px;
+            svg {
+            }
+          }
+        }
+      }
+    }
+    .logo-search {
+      margin-top: 14px;
+      img {
+        width: 100px;
+        margin-left: 20px;
+      }
+    }
+    .watch-categories {
+        span {
+          color: white;
+          font-size: 15px;
+          line-height: 55px;
+          font-weight: 600;
+          border-bottom: 1px solid;
+          border-bottom: 2px dotted #00c8ff;
+          margin-left: 24px;
+          cursor: pointer;
+      }
+    }
+  }
 }

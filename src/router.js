@@ -34,6 +34,19 @@ export default new Router({
             ]
         },
         {
+            path: '/main',
+            name: 'main',
+            component: () => import('./mainLayouts/Main'),
+            redirect: { name: 'searched-orgs' },
+            children: [
+                {
+                    path: '/searched-orgs',
+                    name: 'searched-orgs',
+                    component: () => import('./view/SearchedOrgsView')
+                }
+            ]
+        },
+        {
             path: '/home',
             name: 'home',
             component: () => import('./mainLayouts/Home'),
