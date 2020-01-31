@@ -9,14 +9,6 @@ body {
   background-size: 100%;
 }
 
-.adds {
-  img {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-  }
-}
-
 .danger {
     color: #ff0000 !important;
 }
@@ -642,6 +634,9 @@ body {
           input {
             font-size: 16px;
             font-weight: 600;
+            &::-webkit-input-placeholder {
+              color: white;
+            }
           }
         }
         .search-button {
@@ -663,6 +658,9 @@ body {
       img {
         width: 100px;
         margin-left: 20px;
+      }
+      span {
+        display: none;
       }
     }
     .watch-categories {

@@ -43,6 +43,11 @@ export default new Router({
                     path: '/searched-orgs',
                     name: 'searched-orgs',
                     component: () => import('./view/SearchedOrgsView')
+                },
+                {
+                    path: '/details-org',
+                    name: 'details-org',
+                    component: () => import('./view/DetailsOrgView')
                 }
             ]
         },

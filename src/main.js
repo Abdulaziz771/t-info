@@ -17,7 +17,9 @@ import router from './router'
 import "@/styles/global.scss"
 import "@/styles/media.scss"
 
-Vue.use(BootstrapVue)
+export const bus  = new Vue();
+
+Vue.use(BootstrapVue);
 
 Vue.config.productionTip = false;
 

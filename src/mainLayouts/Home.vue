@@ -55,7 +55,7 @@
                                 <span class="letters cursor-pointer" v-for="letter in alphabet" :key="letter.letter">{{ letter.letter }}</span>
                             </b-col>
                             <b-col class="view-all" cols="2">
-                                <span class="cursor-pointer"><i>Смотреть все</i></span>
+                                <span class="cursor-pointer"><i>Котегории</i></span>
                             </b-col>
                         </b-row>
                         <b-row>

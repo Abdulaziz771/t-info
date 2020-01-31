@@ -1,6 +1,8 @@
 <template>
     <div class="text-white">
-        HELLOOO!!!!!!!!!!
+        <router-link :to="{ name: 'details-org' }">
+            HELLOOO!!!!!!!!!!
+        </router-link>
     </div>
 </template>
 
