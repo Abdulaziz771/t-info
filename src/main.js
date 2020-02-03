@@ -5,19 +5,20 @@ import BootstrapVue from 'bootstrap-vue'
 
 import store from './store'
 
+//star-rating
+import StarRating from 'vue-star-rating';
+Vue.component('star-rating', StarRating);
+
 // app.js
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
-
-// import 'node_modules/bootstrap/scss/bootstrap';
-// import 'node_modules/bootstrap-vue/src/index.scss';
 
 import router from './router'
 
 import "@/styles/global.scss"
 import "@/styles/media.scss"
 
-Vue.use(BootstrapVue)
+Vue.use(BootstrapVue);
 
 Vue.config.productionTip = false;
 

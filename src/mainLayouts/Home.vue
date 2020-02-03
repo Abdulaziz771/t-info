@@ -268,84 +268,155 @@ export default {
             ],
             newOrgs: [
                 {
-                    id: 1,
-                    heading: 'Puremilky',
+                    id : 1,
+                    heading: 'Рестораны и кафе',
                     bodying: [
-                        { name: 'Продукты питания' },
-                        { name: 'Молочные продукты' },
+                        { name: 'Банкетные залы'},
+                        { name: 'Здоровое питание - кафе'},
+                        { name: 'Кафе'},
+                        { name: 'Бары'},
+                        { name: 'Кейтеринг - кофе-брейки'},
+                        { name: 'фуршеты'},
+                        { name: 'обеды'},
+                        { name: 'Общественное питание'},
+                        { name: 'Рестораны'},
+                        { name: 'Фитобары'},
+                        { name: 'Чайханы'}
                     ],
-                    icon: require('./../assets/icons/24.png')
+                    location: { town: 'Ташкент', district: 'Юнусабад', street: 'Улица Амира Темура' },
+                    icon: require('./../assets/icons/17.png'),
+                    rate: 2
                 },
                 {
-                    id: 2,
-                    heading: 'аэрофлот',
+                    id : 2,
+                    heading: 'Пищевое производство',
                     bodying: [
-                        { name: 'Авиакассы' },
-                        { name: 'Авиакомпании' },
+                        { name: 'Банкетные залы' },
+                        { name: 'Здоровое питание - кафе' },
+                        { name: 'Кафе' },
+                        { name: 'Бары' },
                     ],
-                    icon: require('./../assets/icons/19.png')
+                    location: { town: 'Ташкент', district: 'Юнусабад', street: 'Улица Амира Темура' },
+                    icon: require('./../assets/icons/24.png'),
+                    rate: 3
                 },
                 {
-                    id: 3,
-                    heading: 'Nestle',
+                    id : 3,
+                    heading: 'Нефтегазовая отрасль',
                     bodying: [
-                        { name: 'Продукты' },
-                        { name: 'питания' },
+                        { name: 'Банкетные залы' },
+                        { name: 'Здоровое питание - кафе' },
+                        { name: 'Кафе' },
+                        { name: 'Бары' },
+                        { name: 'Бары' },
                     ],
-                    icon: require('./../assets/icons/24.png')
+                    location: { town: 'Ташкент', district: 'Юнусабад', street: 'Улица Амира Темура' },
+                    icon: require('./../assets/icons/22.png'),
+                    rate: 5
                 },
                 {
-                    id: 3,
-                    heading: 'DOCTOR D',
+                    id : 4,
+                    heading: 'Компьютеры и оргтехника',
                     bodying: [
-                        { name: 'Медицина' },
-                        { name: 'Клиники' },
+                        { name: 'Банкетные залы' },
+                        { name: 'Здоровое питание - кафе' },
+                        { name: 'Кафе' },
+                        { name: 'Бары' },
                     ],
-                    icon: require('./../assets/icons/8.png')
+                    location: { town: 'Ташкент', district: 'Юнусабад', street: 'Улица Амира Темура' },
+                    icon: require('./../assets/icons/11.png'),
+                    rate: 5
                 },
                 {
-                    id: 4,
-                    heading: 'Посольство россии',
+                    id : 5,
+                    heading: 'Рестораны и кафе',
                     bodying: [
-                        { name: 'Представительства' },
-                        { name: 'Посольства' },
+                        { name: 'Банкетные залы' },
+                        { name: 'Здоровое питание - кафе' },
+                        { name: 'Кафе' },
+                        { name: 'Бары' },
                     ],
-                    icon: require('./../assets/icons/14.png')
+                    location: { town: 'Ташкент', district: 'Юнусабад', street: 'Улица Амира Темура' },
+                    icon: require('./../assets/icons/4.png'),
+                    rate: 1
                 },
                 {
-                    id: 5,
-                    heading: 'Sarkor telecom',
+                    id : 6,
+                    heading: 'Автомобили',
                     bodying: [
-                        { name: 'Провайдеры' },
-                        { name: 'Интернет' },
+                        { name: 'Банкетные залы' },
+                        { name: 'Здоровое питание - кафе' },
+                        { name: 'Кафе' },
+                        { name: 'Бары' },
                     ],
-                    icon: require('./../assets/icons/9.png')
+                    location: { town: 'Ташкент', district: 'Юнусабад', street: 'Улица Амира Темура' },
+                    icon: require('./../assets/icons/8.png'),
+                    rate: 0
                 },
                 {
-                    id: 6,
-                    heading: 'agromir',
+                    id : 7,
+                    heading: 'Медицина',
                     bodying: [
-                        { name: 'Продукты питания' },
-                        { name: 'Молочные продукты' },
+                        { name: 'Банкетные залы' },
+                        { name: 'Здоровое питание - кафе' },
+                        { name: 'Кафе' },
+                        { name: 'Бары' },
                     ],
-                    icon: require('./../assets/icons/24.png')
+                    location: { town: 'Ташкент', district: 'Юнусабад', street: 'Улица Амира Темура' },
+                    icon: require('./../assets/icons/10.png'),
+                    rate: 1
                 },
                 {
-                    id: 7,
-                    heading: 'tuskish airways',
+                    id : 8,
+                    heading: 'Сельское хозяйство',
                     bodying: [
-                        { name: 'Авиакассы' },
-                        { name: 'Авиакомпании' },
+                        { name: 'Банкетные залы' },
+                        { name: 'Здоровое питание - кафе' },
+                        { name: 'Кафе' },
+                        { name: 'Бары' },
                     ],
-                    icon: require('./../assets/icons/19.png')
+                    location: { town: 'Ташкент', district: 'Юнусабад', street: 'Улица Амира Темура' },
+                    icon: require('./../assets/icons/23.png'),
+                    rate: 4
                 },
                 {
-                    id: 8,
-                    heading: 'гламурпродукт',
+                    id : 9,
+                    heading: 'Автомобили',
                     bodying: [
-                        { name: 'Молочные продукты'},
+                        { name: 'Банкетные залы' },
+                        { name: 'Здоровое питание - кафе' },
+                        { name: 'Кафе' },
+                        { name: 'Бары' },
                     ],
-                    icon: require('./../assets/icons/24.png')
+                    location: { town: 'Ташкент', district: 'Юнусабад', street: 'Улица Амира Темура' },
+                    icon: require('./../assets/icons/8.png'),
+                    rate: 5
+                },
+                {
+                    id : 10,
+                    heading: 'Медицина',
+                    bodying: [
+                        { name: 'Банкетные залы' },
+                        { name: 'Здоровое питание - кафе' },
+                        { name: 'Кафе' },
+                        { name: 'Бары' },
+                    ],
+                    location: { town: 'Ташкент', district: 'Юнусабад', street: 'Улица Амира Темура' },
+                    icon: require('./../assets/icons/10.png'),
+                    rate: 1
+                },
+                {
+                    id : 11,
+                    heading: 'Сельское хозяйство',
+                    bodying: [
+                        { name: 'Банкетные залы' },
+                        { name: 'Здоровое питание - кафе' },
+                        { name: 'Кафе' },
+                        { name: 'Бары' },
+                    ],
+                    location: { town: 'Ташкент', district: 'Юнусабад', street: 'Улица Амира Темура' },
+                    icon: require('./../assets/icons/23.png'),
+                    rate: 0
                 }
             ],
             catalog: [
@@ -365,6 +436,7 @@ export default {
                         { name: 'Фитобары'},
                         { name: 'Чайханы'}
                     ],
+                    location: { town: 'Ташкент', district: 'Юнусабад', street: 'Улица Амира Темура' },
                     icon: require('./../assets/icons/17.png')
                 },
                 {
@@ -376,6 +448,7 @@ export default {
                         { name: 'Кафе' },
                         { name: 'Бары' },
                     ],
+                    location: { town: 'Ташкент', district: 'Юнусабад', street: 'Улица Амира Темура' },
                     icon: require('./../assets/icons/24.png')
                 },
                 {
@@ -388,6 +461,7 @@ export default {
                         { name: 'Бары' },
                         { name: 'Бары' },
                     ],
+                    location: { town: 'Ташкент', district: 'Юнусабад', street: 'Улица Амира Темура' },
                     icon: require('./../assets/icons/22.png')
                 },
                 {
@@ -399,6 +473,7 @@ export default {
                         { name: 'Кафе' },
                         { name: 'Бары' },
                     ],
+                    location: { town: 'Ташкент', district: 'Юнусабад', street: 'Улица Амира Темура' },
                     icon: require('./../assets/icons/11.png')
                 },
                 {
@@ -410,6 +485,7 @@ export default {
                         { name: 'Кафе' },
                         { name: 'Бары' },
                     ],
+                    location: { town: 'Ташкент', district: 'Юнусабад', street: 'Улица Амира Темура' },
                     icon: require('./../assets/icons/4.png')
                 },
                 {
@@ -421,6 +497,7 @@ export default {
                         { name: 'Кафе' },
                         { name: 'Бары' },
                     ],
+                    location: { town: 'Ташкент', district: 'Юнусабад', street: 'Улица Амира Темура' },
                     icon: require('./../assets/icons/8.png')
                 },
                 {
@@ -432,6 +509,7 @@ export default {
                         { name: 'Кафе' },
                         { name: 'Бары' },
                     ],
+                    location: { town: 'Ташкент', district: 'Юнусабад', street: 'Улица Амира Темура' },
                     icon: require('./../assets/icons/10.png')
                 },
                 {
@@ -443,6 +521,7 @@ export default {
                         { name: 'Кафе' },
                         { name: 'Бары' },
                     ],
+                    location: { town: 'Ташкент', district: 'Юнусабад', street: 'Улица Амира Темура' },
                     icon: require('./../assets/icons/23.png')
                 }
             ],
@@ -469,7 +548,7 @@ export default {
             this.tab3 = true
         },
         searchOrgs() {
-            this.$router.push({ name: 'searched-orgs' })
+            this.$router.push({ name: 'interface-orgs' })
         }
     }
 }

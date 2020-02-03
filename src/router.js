@@ -37,12 +37,12 @@ export default new Router({
             path: '/main',
             name: 'main',
             component: () => import('./mainLayouts/Main'),
-            redirect: { name: 'searched-orgs' },
+            redirect: { name: 'interface-orgs' },
             children: [
                 {
-                    path: '/searched-orgs',
-                    name: 'searched-orgs',
-                    component: () => import('./view/SearchedOrgsView')
+                    path: '/search',
+                    name: 'interface-orgs',
+                    component: () => import('./view/InterfaceOrgsView')
                 }
             ]
         },

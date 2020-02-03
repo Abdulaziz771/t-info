@@ -2,6 +2,7 @@
 $t-info-bacground-image: url('./../assets/t-info-bacground-image.png');
 $default-color-with-black-background: #c8c8c8;
 $brand-color: #00c8ff;
+$second-plane-text-color: #969696;
 body {
   margin: 0;
   padding: 0;
@@ -65,6 +66,11 @@ body {
 .info-button-dark-color {
     border-right: 10px;
     background: #282828;
+}
+
+.vue-star-rating-star {
+  width: 18px;
+  height: 18px;
 }
 
 #body {
@@ -487,8 +493,10 @@ body {
                     .org-category {
                       font-size: 11px;
                       margin-right: 10px;
+                      color: #969696;
                       &:hover {
                         border-bottom: 1px dotted $brand-color;
+                        color: black;
                       }
                     }
                   }
@@ -570,7 +578,7 @@ body {
                 .catalog-body {
                   text-transform: capitalize;
                   font-size: 10px;
-                  color: #8a8a8a;
+                  color: $second-plane-text-color;
                   margin-right: 10px;
                   &:hover {
                     color: black;
@@ -624,6 +632,7 @@ body {
 
 #main-header {
   padding-top: 30px;
+  padding-bottom: 15px;
   .main-search {
     div:nth-child(2) {
       background: $brand-color;
@@ -676,6 +685,123 @@ body {
           margin-left: 24px;
           cursor: pointer;
       }
+    }
+  }
+}
+
+#interface {
+  padding-top: 20px;
+  .content-center {
+    .tool-bar {
+      .searched-text {
+        font-size: 22px;
+        font-weight: 700;
+        text-transform: uppercase;
+      }
+      .matches {
+        color: $second-plane-text-color;
+        font-size: 14px;
+      }
+    }
+    .toggle-button-filter {
+      padding-top: 15px;
+      padding-bottom: 28px;
+      display: flex;
+      div {
+        font-size: 14px;
+        padding: 3px 20px;
+        color: #646464;
+        cursor: pointer;
+        span {
+          border-bottom: 2px dotted $brand-color;
+        }
+      }
+      div.active {
+        background: #282828;
+        border-radius: 10px;
+        color: white;
+        span {
+          border: none;
+        }
+      }
+    }
+    .searched {
+      .org {
+        padding-bottom: 10px;
+        padding-top: 10px;
+        padding-left: 15px;
+        cursor: pointer;
+        border: 1px solid transparent;
+        &:hover {
+          background: #f9f9f9;
+          border: 1px solid gainsboro;
+          border-radius: 10px;
+        }
+        .catalog-icon {
+          width: 70px;
+        }
+        .catalog-description {
+          .catalog-heading {
+            font-size: 24px;
+            font-weight: bolder;
+            color: $brand-color;
+          }
+          .location {
+            color: #282828;
+            font-weight: 600;
+            padding-top: 5px;
+            padding-bottom: 8px;
+            svg {
+              width: 15px;
+            }
+            span {
+              margin-left: 5px;
+            }
+          }
+          .catalog-body {
+            color: $second-plane-text-color;
+            margin-right: 10px;
+            &:hover {
+              color: black;
+              border-bottom: 1px dotted $brand-color;
+            }
+          }
+          .stars-rate {
+            line-height: 33px;
+            margin-left: 20px;
+          }
+          div:nth-child(3) {
+            margin-left: 20px;
+          }
+        }
+      }
+    }
+  }
+  .category-left {
+    .category-title {
+      color: $second-plane-text-color;
+      font-size: 14px;
+      line-height: 32px;
+    }
+    .category-filter, .location-filter, .district-filter {
+      span:nth-child(1) {
+        font-size: 14px;
+        font-weight: 700;
+        text-transform: uppercase;
+        cursor: pointer;
+      }
+      .card {
+        border: none;
+        .card-body {
+          padding: 0;
+          padding-left: 13px;
+        }
+      }
+    }
+    .category-elements {
+      color: #646464;
+      font-size: 12px;
+      padding-top: 7px;
     }
   }
 }
