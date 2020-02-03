@@ -40,14 +40,20 @@ export default new Router({
             redirect: { name: 'interface-orgs' },
             children: [
                 {
+<<<<<<< HEAD
                     path: '/search',
                     name: 'interface-orgs',
                     component: () => import('./view/InterfaceOrgsView')
+=======
+                    path: '/searched-orgs',
+                    name: 'searched-orgs',
+                    component: () => import('./view/SearchedOrgsView')
                 },
                 {
                     path: '/details-org',
                     name: 'details-org',
                     component: () => import('./view/DetailsOrgView')
+>>>>>>> 2b83de4b1cd4fee8b387efbd786f844c62f98163
                 }
             ]
         },

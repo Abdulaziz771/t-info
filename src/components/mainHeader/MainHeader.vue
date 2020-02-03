@@ -2,14 +2,17 @@
     <div class="container" id="main-header">
         <div class="main-search-parent">
             <b-row class="main-search">
-                <b-col cols="2" class="logo-search">
+                <b-col cols="12" sm="2" class="logo-search">
                     <img src="./../../assets/t-info.png">
+                    <span>
+                        Котегории
+                    </span>
                 </b-col>
-                <b-col cols="8">
+                <b-col cols="12" sm="8" class="search-input">
                     <div class="d-flex">
                         <div class="search-title">Я ИЩУ</div>
                         <div>
-                            <input type="search" class="w-100 info-input form-control outline-none">
+                            <input type="search" placeholder="Я ищу..." class="w-100 info-input form-control outline-none">
                         </div>
                         <div class="search-button">
                             <div>
@@ -18,7 +21,7 @@
                         </div>
                     </div>
                 </b-col>
-                <b-col cols="2" class="watch-categories">
+                <b-col sm="2" class="watch-categories">
                     <span>
                         Котегории
                     </span>

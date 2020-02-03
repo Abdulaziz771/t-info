@@ -1,20 +1,27 @@
 <template>
     <div id="sidebar">
         <div class="menu-list cursor-pointer">
-            <router-link :to="{ path: 'home' }">О НАС</router-link>
+            <router-link :to="{ path: 'home' }"><span @click="offSidbar">О НАС</span></router-link>
         </div>
         <div class="menu-list cursor-pointer">
-            <router-link :to="{ path: 'home' }">реклама</router-link>
+            <router-link @click="offSidbar" :to="{ path: 'home' }"><span @click="offSidbar">реклама</span></router-link>
         </div>
         <div class="menu-list cursor-pointer">
-            <router-link :to="{ path: 'home' }">добавить компанию</router-link>
+            <router-link @click="offSidbar" :to="{ path: 'home' }"><span @click="offSidbar">добавить компанию</span></router-link>
         </div>
     </div>
 </template>
 
 <script>
+import { bus } from "../../main";
+
 export default {
     name: 'sidebar',
+    methods: {
+        offSidbar() {
+            bus.$emit('offSidebar', false)
+        }
+    }
 }
 </script>
 

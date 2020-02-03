@@ -42,7 +42,7 @@
 </template>
 
 <script>
-
+import { bus } from "../../main";
 import {
     XIcon,
     LockIcon,
@@ -65,8 +65,13 @@ export default {
     },
     methods: {
         toggleSidebar() {
-            this.showSidebar = !this.showSidebar
+            this.showSidebar = !this.showSidebar;
         }
+    },
+    created() {
+        bus.$on('offSidebar', (data => {
+            this.showSidebar = data
+        }))
     }
 }
 </script>
