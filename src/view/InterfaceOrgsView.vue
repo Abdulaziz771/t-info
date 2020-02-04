@@ -2,7 +2,7 @@
     <div class="bg-white" id="interface">
         <div class="interface container">
             <b-row>
-                <b-col class="category-left" cols="2">
+                <b-col class="category-left" md="3" lg="2" cols="">
                     <div class="category-title">
                         Уточнить поиск
                     </div>
@@ -35,7 +35,7 @@
                         </b-collapse>
                     </div>
                 </b-col>
-                <b-col class="content-center" cols="8">
+                <b-col class="content-center" sm="12" md="9" lg="8" cols="">
                     <div class="tool-bar">
                         <div class="searched-text">
                             XUMO
@@ -44,48 +44,58 @@
                             Мы нашли 245 совпадений
                         </div>
                         <div class="toggle-button-filter">
-                            <div class="active"><span>Популярное</span></div>
-                            <div><span>А-Я</span></div>
-                            <div><span>По рейтингу</span></div>
+                            <div @click="tab1active" :class="{ active : tab1 }"><span>По близости</span></div>
+                            <div @click="tab2active" :class="{ active : tab2 }"><span>А-Я</span></div>
+                            <div @click="tab3active" :class="{ active : tab3 }"><span>По рейтингу</span></div>
                         </div>
                     </div>
-                    <div class="searched">
-                        <div class="org" id="org" v-for="(org, index) in orgs" :key="org.id">
-                            <div class="d-flex">
-                                <div class="catalog-icon">
-                                    <img :src="org.icon">
-                                </div>
-                                <div class="catalog-description">
+                    <div class="searched beauty-scroll">
+                            <div class="org" v-for="(org, index) in sortByRate" :key="org.index">
+                                <router-link :to="{ name: 'details-org', params: { id: index } }">
                                     <div class="d-flex">
-                                        <div class="catalog-heading"><span class="mr-2">{{ index +1  }}</span>    {{  org.heading  }}</div>
-                                        <div class="stars-rate">
-                                            <star-rating :show-rating="false" :rating="org.rate" :read-only="true" ></star-rating>
+                                    <div class="catalog-icon">
+                                        <img :src="require('./../assets/icons/' + org.icon)">
+                                    </div>
+                                    <div class="catalog-description">
+                                        <div class="d-flex">
+                                            <div class="catalog-heading"><span class="mr-2 org-index">{{ index + 1  }}</span>    {{  org.heading  }}</div>
+                                            <div class="stars-rate">
+                                                <star-rating :show-rating="false" :rating="org.rate" :read-only="true" ></star-rating>
+                                            </div>
+                                        </div>
+                                        <div class="location">
+                                            <MapPinIcon></MapPinIcon>
+                                            <span>{{ org.location.town }},</span>
+                                            <span>{{ org.location.district }},</span>
+                                            <span>{{ org.location.street }}</span>
+                                        </div>
+                                        <div>
+                                            <span class="catalog-body cursor-pointer" v-for="(desc, index) in org.bodying.slice(0, 5)" :key="index">{{ desc.name }}</span>
                                         </div>
                                     </div>
-                                    <div class="location">
-                                        <MapPinIcon></MapPinIcon>
-                                        <span>{{ org.location.town }},</span>
-                                        <span>{{ org.location.district }},</span>
-                                        <span>{{ org.location.street }}</span>
-                                    </div>
-                                    <div>
-                                        <span class="catalog-body cursor-pointer" v-for="desc in org.bodying.slice(0, 5)" :key="desc.name">{{ desc.name }}</span>
-                                    </div>
                                 </div>
+                                </router-link>
                             </div>
-                        </div>
                     </div>
                     <div class="pagination">
 
                     </div>
                 </b-col>
-                <b-col class="adds-right" cols="2"></b-col>
+                <b-col class="adds-right" cols="2">
+                    <div class="adds">
+                        <img src="./../assets/add/adds2.png" class="w-100 mb-3" alt="add">
+                    </div>
+                    <div class="adds">
+                        <img src="./../assets/add/adds1.png" class="w-100 mb-3" alt="add">
+                    </div>
+                </b-col>
             </b-row>
         </div>
     </div>
 </template>
 
 <script>
+import org from './../../public/data/org';
 import StarRating from 'vue-star-rating';
 import {
     MapPinIcon
@@ -94,165 +104,44 @@ export default {
     name: 'interface-orgs',
     components: {
         StarRating,
-        MapPinIcon
+        MapPinIcon,
     },
     data() {
         return {
             perPage: 5,
             currentPage: 1,
-            orgs: [
-                {
-                    id : 1,
-                    heading: 'Рестораны и кафе',
-                    bodying: [
-                        { name: 'Банкетные залы'},
-                        { name: 'Здоровое питание - кафе'},
-                        { name: 'Кафе'},
-                        { name: 'Бары'},
-                        { name: 'Кейтеринг - кофе-брейки'},
-                        { name: 'фуршеты'},
-                        { name: 'обеды'},
-                        { name: 'Общественное питание'},
-                        { name: 'Рестораны'},
-                        { name: 'Фитобары'},
-                        { name: 'Чайханы'}
-                    ],
-                    location: { town: 'Ташкент', district: 'Юнусабад', street: 'Улица Амира Темура' },
-                    icon: require('./../assets/icons/17.png'),
-                    rate: 2
-                },
-                {
-                    id : 2,
-                    heading: 'Пищевое производство',
-                    bodying: [
-                        { name: 'Банкетные залы' },
-                        { name: 'Здоровое питание - кафе' },
-                        { name: 'Кафе' },
-                        { name: 'Бары' },
-                    ],
-                    location: { town: 'Ташкент', district: 'Юнусабад', street: 'Улица Амира Темура' },
-                    icon: require('./../assets/icons/24.png'),
-                    rate: 3
-                },
-                {
-                    id : 3,
-                    heading: 'Нефтегазовая отрасль',
-                    bodying: [
-                        { name: 'Банкетные залы' },
-                        { name: 'Здоровое питание - кафе' },
-                        { name: 'Кафе' },
-                        { name: 'Бары' },
-                        { name: 'Бары' },
-                    ],
-                    location: { town: 'Ташкент', district: 'Юнусабад', street: 'Улица Амира Темура' },
-                    icon: require('./../assets/icons/22.png'),
-                    rate: 5
-                },
-                {
-                    id : 4,
-                    heading: 'Компьютеры и оргтехника',
-                    bodying: [
-                        { name: 'Банкетные залы' },
-                        { name: 'Здоровое питание - кафе' },
-                        { name: 'Кафе' },
-                        { name: 'Бары' },
-                    ],
-                    location: { town: 'Ташкент', district: 'Юнусабад', street: 'Улица Амира Темура' },
-                    icon: require('./../assets/icons/11.png'),
-                    rate: 5
-                },
-                {
-                    id : 5,
-                    heading: 'Рестораны и кафе',
-                    bodying: [
-                        { name: 'Банкетные залы' },
-                        { name: 'Здоровое питание - кафе' },
-                        { name: 'Кафе' },
-                        { name: 'Бары' },
-                    ],
-                    location: { town: 'Ташкент', district: 'Юнусабад', street: 'Улица Амира Темура' },
-                    icon: require('./../assets/icons/4.png'),
-                    rate: 1
-                },
-                {
-                    id : 6,
-                    heading: 'Автомобили',
-                    bodying: [
-                        { name: 'Банкетные залы' },
-                        { name: 'Здоровое питание - кафе' },
-                        { name: 'Кафе' },
-                        { name: 'Бары' },
-                    ],
-                    location: { town: 'Ташкент', district: 'Юнусабад', street: 'Улица Амира Темура' },
-                    icon: require('./../assets/icons/8.png'),
-                    rate: 0
-                },
-                {
-                    id : 7,
-                    heading: 'Медицина',
-                    bodying: [
-                        { name: 'Банкетные залы' },
-                        { name: 'Здоровое питание - кафе' },
-                        { name: 'Кафе' },
-                        { name: 'Бары' },
-                    ],
-                    location: { town: 'Ташкент', district: 'Юнусабад', street: 'Улица Амира Темура' },
-                    icon: require('./../assets/icons/10.png'),
-                    rate: 1
-                },
-                {
-                    id : 8,
-                    heading: 'Сельское хозяйство',
-                    bodying: [
-                        { name: 'Банкетные залы' },
-                        { name: 'Здоровое питание - кафе' },
-                        { name: 'Кафе' },
-                        { name: 'Бары' },
-                    ],
-                    location: { town: 'Ташкент', district: 'Юнусабад', street: 'Улица Амира Темура' },
-                    icon: require('./../assets/icons/23.png'),
-                    rate: 4
-                },
-                {
-                    id : 9,
-                    heading: 'Автомобили',
-                    bodying: [
-                        { name: 'Банкетные залы' },
-                        { name: 'Здоровое питание - кафе' },
-                        { name: 'Кафе' },
-                        { name: 'Бары' },
-                    ],
-                    location: { town: 'Ташкент', district: 'Юнусабад', street: 'Улица Амира Темура' },
-                    icon: require('./../assets/icons/8.png'),
-                    rate: 5
-                },
-                {
-                    id : 10,
-                    heading: 'Медицина',
-                    bodying: [
-                        { name: 'Банкетные залы' },
-                        { name: 'Здоровое питание - кафе' },
-                        { name: 'Кафе' },
-                        { name: 'Бары' },
-                    ],
-                    location: { town: 'Ташкент', district: 'Юнусабад', street: 'Улица Амира Темура' },
-                    icon: require('./../assets/icons/10.png'),
-                    rate: 1
-                },
-                {
-                    id : 11,
-                    heading: 'Сельское хозяйство',
-                    bodying: [
-                        { name: 'Банкетные залы' },
-                        { name: 'Здоровое питание - кафе' },
-                        { name: 'Кафе' },
-                        { name: 'Бары' },
-                    ],
-                    location: { town: 'Ташкент', district: 'Юнусабад', street: 'Улица Амира Темура' },
-                    icon: require('./../assets/icons/23.png'),
-                    rate: 0
-                }
-            ],
+            orgs: org ,
+            tab1: true,
+            tab2: false,
+            tab3: false,
+        }
+    },
+    methods: {
+        tab2active() {
+            this.tab1 = this.tab3 = false;
+            this.tab2 = true
+        },
+        tab1active() {
+            this.tab2 = this.tab3 = false;
+            this.tab1 = true
+        },
+        tab3active() {
+            this.tab2 = this.tab1 = false;
+            this.tab3 = true
+        },
+    },
+    computed: {
+        sortByRate() {
+            var curr = this;
+            function compare(a, b) {
+                if (a.rate < b.rate)
+                    return -1;
+                if (a.rate > b.rate)
+                    return 1;
+                return 0;
+            }
+
+            return curr.orgs.sort(compare).reverse();
         }
     }
 }

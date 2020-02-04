@@ -2,7 +2,7 @@
   <div id="header">
       <b-container>
           <b-row>
-              <b-col cols="6" class="text-left">
+              <b-col cols="3" sm="6" class="text-left">
                   <div class="header-menu">
                       <XIcon v-if="showSidebar" @click="toggleSidebar" class="x-icon cursor-pointer"></XIcon>
                       <MenuIcon @click="toggleSidebar" class="menu-icon-svg" v-else ></MenuIcon>
@@ -17,8 +17,15 @@
                       </span>
                   </div>
               </b-col>
-              <b-col cols="6" class="text-right">
+              <b-col cols="9" sm="6" class="text-right">
                   <div class="header-admin-stuff">
+                      <span class="login-text-icon cursor-pointer">
+                            <span>
+                                <router-link :to="{ name: 'login' }">
+                                    Регистрация
+                                </router-link>
+                            </span>
+                      </span>
                       <span class="login-text-icon cursor-pointer">
                           <LockIcon></LockIcon>
                             <span>

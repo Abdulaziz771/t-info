@@ -65,6 +65,29 @@ body {
   height: 18px;
 }
 
+.beauty-scroll {
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  &::-webkit-scrollbar-button {
+    display: none
+  }
+
+  &::-webkit-scrollbar-track-piece {
+    background: white;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #9aa2af;
+    border-radius: 5px;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: #848b96;
+  }
+}
+
 #body {
     position: absolute;
     left: 0;
@@ -688,7 +711,13 @@ body {
 }
 
 #interface {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 143px;
+  bottom: 0;
   padding-top: 20px;
+  padding-bottom: 35px;
   .content-center {
     .tool-bar {
       .searched-text {
@@ -724,6 +753,16 @@ body {
       }
     }
     .searched {
+      width: 755px;
+      position: fixed;
+      top: 287px;
+      bottom: 0;
+      overflow-y: scroll;
+      a {
+        &:hover {
+          text-decoration: none;
+        }
+      }
       .org {
         padding-bottom: 10px;
         padding-top: 10px;
@@ -802,4 +841,100 @@ body {
       padding-top: 7px;
     }
   }
+}
+
+#detailes {
+  padding-top: 25px;
+  background: white;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 143px;
+  .detailes-map {
+    height: 100%;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    position: absolute;
+    padding: 0;
+    iframe {
+      height: inherit !important;
+    }
+  }
+  .detailes {
+    position: absolute;
+    bottom: 0;
+    top: 25px;
+    overflow: auto;
+    .description {
+      .description-title {
+        font-size: 23px;
+        div {
+          font-size: 13px;
+          color: $second-plane-text-color;
+        }
+      }
+      .rate {
+        padding-bottom: 25px;
+        .vue-star-rating {
+          .vue-star-rating-star {
+            margin-right: 10px !important;
+          }
+        }
+        .feedback-lenght {
+          color: $second-plane-text-color;
+          font-size: 11px;
+          margin-top: 11px;
+        }
+      }
+      .description-description {
+        padding-bottom: 40px;
+        width: 470px;
+        color: #4c4c4c;
+        font-weight: 500;
+      }
+    }
+    .company-timetable {
+      .location {
+        padding-bottom: 25px;
+        span {
+          font-weight: 500;
+          color: black;
+          margin-left: 11px;
+        }
+      }
+      .timetable {
+        padding-bottom: 20px;
+        margin-left: 30px;
+        .row {
+          .timetable-info {
+            font-weight: 500;
+            font-size: 18px;
+          }
+          .timetable-condition {
+            color: $default-color-with-black-background;
+          }
+        }
+      }
+      .call-phone {
+        padding-bottom: 20px;
+        span {
+          font-weight: 500;
+          margin-left: 11px;
+        }
+      }
+      .email {
+        padding-bottom: 15px;
+        span {
+          color: $brand-color;
+          margin-left: 11px;
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  }
+
 }

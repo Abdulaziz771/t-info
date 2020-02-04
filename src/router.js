@@ -45,7 +45,7 @@ export default new Router({
                     component: () => import('./view/InterfaceOrgsView')
                 },
                 {
-                    path: '/details-org',
+                    path: '/details-org/:id',
                     name: 'details-org',
                     component: () => import('./view/DetailsOrgView')
                 }
