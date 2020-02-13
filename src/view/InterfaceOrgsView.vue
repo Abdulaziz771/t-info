@@ -50,7 +50,7 @@
                         </div>
                     </div>
                     <div class="searched beauty-scroll">
-                            <div class="org" v-for="(org, index) in sortByRate" :key="org.index">
+                        <div class="org" v-for="(org, index) in sortByRate" :key="org.index">
                                 <router-link :to="{ name: 'details-org', params: { id: index } }">
                                     <div class="d-flex">
                                     <div class="catalog-icon">
@@ -69,7 +69,7 @@
                                             <span>{{ org.location.district }},</span>
                                             <span>{{ org.location.street }}</span>
                                         </div>
-                                        <div>
+                                        <div class="category-child">
                                             <span class="catalog-body cursor-pointer" v-for="(desc, index) in org.bodying.slice(0, 5)" :key="index">{{ desc.name }}</span>
                                         </div>
                                     </div>
@@ -108,8 +108,6 @@ export default {
     },
     data() {
         return {
-            perPage: 5,
-            currentPage: 1,
             orgs: org ,
             tab1: true,
             tab2: false,

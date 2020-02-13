@@ -33,9 +33,11 @@
                             <input class="mb-4 info-input form-control" placeholder="Телефон или E-mail">
                             <input class="mb-4 info-input form-control" type="password" placeholder="Пароль">
                         </form>
-                        <div class="registr-button text-center">
-                            <b-button class="info-button-dark-color">Войти</b-button>
-                        </div>
+                        <router-link :to="{ name: 'home' }">
+                            <div class="registr-button text-center">
+                                <b-button class="info-button-dark-color">Войти</b-button>
+                            </div>
+                        </router-link>
                         <div class="have-accaunt text-center pt-3">
                             Вы еще не зарегестрированы?
                             <router-link :to="{ path: 'login' }">

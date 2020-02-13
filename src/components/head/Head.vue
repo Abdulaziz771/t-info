@@ -7,26 +7,38 @@
                       <XIcon v-if="showSidebar" @click="toggleSidebar" class="x-icon cursor-pointer"></XIcon>
                       <MenuIcon @click="toggleSidebar" class="menu-icon-svg" v-else ></MenuIcon>
                       <span class="menu-icon cursor-pointer">
-                          <router-link :to="{ path: 'home' }">О НАС</router-link>
+                          <router-link :to="{ name: 'home' }">О НАС</router-link>
                       </span>
                       <span class="menu-icon cursor-pointer">
-                          <router-link :to="{ path: 'home' }">реклама</router-link>
+                          <router-link :to="{ name: 'home' }">реклама</router-link>
                       </span>
                       <span class="menu-icon cursor-pointer">
-                          <router-link :to="{ path: 'home' }">добавить компанию</router-link>
+                          <router-link :to="{ name: 'add-org' }">добавить компанию</router-link>
                       </span>
                   </div>
               </b-col>
               <b-col cols="9" sm="6" class="text-right">
                   <div class="header-admin-stuff">
-                      <span class="login-text-icon cursor-pointer">
-                            <span>
-                                <router-link :to="{ name: 'login' }">
-                                    Регистрация
-                                </router-link>
-                            </span>
+                      <span v-if="this.$store.getters.valueAccountExist" class="login-text-icon cursor-pointer user-date">
+                        <span>
+                            <router-link :to="{ name: 'personal-area' }">
+                                <span class="avatar">
+                                    <img v-if="this.$store.getters.valueavatarImg" :src="this.$store.getters.valueavatarImg" class="rounded-circle mr-2">
+                                    <img v-else src="../../assets/user.png" class="mr-2">
+                                </span>
+                                <span>Мария</span>
+                            </router-link>
+                        </span>
                       </span>
-                      <span class="login-text-icon cursor-pointer">
+                      <template v-else>
+                          <span class="login-text-icon cursor-pointer">
+                                <span>
+                                    <router-link :to="{ name: 'login' }">
+                                        Регистрация
+                                    </router-link>
+                                </span>
+                            </span>
+                          <span class="login-text-icon cursor-pointer">
                           <LockIcon></LockIcon>
                             <span>
                                 <router-link :to="{ name: 'signin' }">
@@ -34,6 +46,7 @@
                                 </router-link>
                             </span>
                       </span>
+                      </template>
                       <b-dropdown id="dropdown-language" text="Ru" class="m-md-2">
                           <b-dropdown-item>Uz</b-dropdown-item>
                           <b-dropdown-item>En</b-dropdown-item>
@@ -99,6 +112,18 @@ export default {
 
     .menu-icon-svg {
         display: none;
+    }
+
+    .user-date {
+
+    }
+
+    .avatar {
+        line-height: 40px;
+        img {
+            width: 20px;
+            height: 20px;
+        }
     }
 
 </style>

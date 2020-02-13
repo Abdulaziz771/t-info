@@ -9,6 +9,9 @@ import store from './store'
 import StarRating from 'vue-star-rating';
 Vue.component('star-rating', StarRating);
 
+import VueTheMask from 'vue-the-mask'
+Vue.use(VueTheMask);
+
 // app.js
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'

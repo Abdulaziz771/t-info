@@ -48,7 +48,27 @@ export default new Router({
                     path: '/details-org/:id',
                     name: 'details-org',
                     component: () => import('./view/DetailsOrgView')
-                }
+                },
+                {
+                    path: '/category',
+                    name: 'category',
+                    component: () => import('./view/CategoryOrgsView')
+                },
+                {
+                    path: '/personal-area',
+                    name: 'personal-area',
+                    component: () => import('./view/PersonalAreaView')
+                },
+                {
+                    path: '/user-orgs',
+                    name: 'user-orgs',
+                    component: () => import('./view/UserOrgsView')
+                },
+                {
+                    path: '/add-org',
+                    name: 'add-org',
+                    component: () => import('./view/AddOrgView')
+                },
             ]
         },
         {

@@ -1,9 +1,11 @@
+$brand-color: #00c8ff;
+
 @media all and (max-width: 1300px) {
   #detailes {
     .detailes {
       .description {
         .description-description {
-          width: 370px;
+          width: auto;
         }
       }
     }
@@ -21,6 +23,7 @@
         font-size: 14px;
       }
     }
+
     .search-panel {
       div:nth-child(3) {
         width: auto !important;
@@ -32,14 +35,17 @@
     .main-search {
       .search-input {
         padding-left: 0 !important;
+
         .search-title {
           display: none;
         }
+
         input {
           &::-webkit-input-placeholder {
             color: #4f4f4f !important;
           }
         }
+
         div:nth-child(2) {
           width: 100% !important;
         }
@@ -54,7 +60,17 @@
     }
   }
   #detailes {
-    padding-left: 40px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  #category {
+    .content {
+      .category-list {
+        .row {
+          width: 816px;
+        }
+      }
+    }
   }
 }
 
@@ -73,19 +89,23 @@
         .nav-tabs {
           display: none;
         }
-        .tab-content  {
+
+        .tab-content {
           .search-panel {
             div:nth-child(3) {
               span:nth-child(2) {
                 display: none;
               }
             }
+
             div:nth-child(2) {
               width: 100% !important;
+
               input::-webkit-input-placeholder {
                 color: #4f4f4f !important;
               }
             }
+
             div:nth-child(1) {
               display: none;
             }
@@ -93,22 +113,26 @@
         }
       }
     }
+
     .add-new-org {
       .user-type, .org-name {
         div:nth-child(1) {
           display: none;
         }
       }
+
       .contnie-button {
         span {
           display: none;
         }
+
         svg {
           display: block !important;
           margin: 5px auto;
         }
       }
     }
+
     .home-footer {
       top: 198px;
     }
@@ -127,14 +151,51 @@
     .adds-right {
       display: none;
     }
+
     .content-center {
       .searched {
         width: auto !important;
+
         .org {
           padding-right: 15px;
         }
       }
     }
+  }
+  #category {
+    .content {
+      .category-list {
+        .row {
+          width: 564px;
+        }
+      }
+    }
+  }
+  #detailes {
+    position: absolute;
+    top: 103px;
+    left: 0;
+    right: 0;
+
+    .detailes {
+      top: 320px;
+      bottom: 0;
+      left: 0;
+      position: relative;
+    }
+
+    .detailes-map {
+      top: 0;
+      right: 0;
+      left: 0;
+      height: 300px;
+      position: absolute;
+    }
+  }
+  #personal-area {
+    position: relative;
+    height: fit-content;
+    top: 0;
   }
 }
 
@@ -148,6 +209,7 @@
     .mobile-logo {
       display: block;
     }
+
     .briefly-org-info {
       display: none;
     }
@@ -159,25 +221,32 @@
           justify-content: center;
         }
       }
+
       .slogan {
         display: none;
       }
     }
+
     .search-component {
       padding-top: 20px;
+
       .tabs {
         .tab-content {
           padding: 0;
         }
       }
     }
+
     .home-footer {
       top: 148px;
+
       .container {
         display: none;
       }
+
       .mobile-catalog {
         display: block !important;
+
         .mobile-section {
           display: block;
         }
@@ -188,14 +257,17 @@
     .search-input {
       .search-button {
         margin-top: 5px;
+
         div {
           margin-top: 0 !important;
           padding: 4px 12px !important;
+
           svg {
             width: 19px;
           }
         }
       }
+
       div:nth-child(2) {
         //padding: 0 5px !important;
         input {
@@ -203,9 +275,11 @@
         }
       }
     }
+
     .logo-search {
       margin-top: 10px !important;
     }
+
     .watch-categories {
       span {
         line-height: 40px !important;
@@ -214,19 +288,65 @@
     }
   }
   #interface {
+    .searched {
+      position: static !important;
+    }
+
     .adds-right {
       display: none;
     }
+
     .content-center {
       .tool-bar {
         text-align: center;
+
         .toggle-button-filter {
           justify-content: center;
         }
       }
     }
+
     .category-left {
       display: none;
+    }
+  }
+  #category {
+    .category-left {
+      display: none;
+    }
+
+    .content {
+      .category-list {
+        .row {
+          width: auto;
+          position: static !important;
+        }
+      }
+    }
+  }
+  #personal-area {
+    .container {
+      .personal-sidebar {
+        display: none;
+      }
+      .content {
+        padding-left: 20px;
+        .toggle-button-filter {
+          display: flex;
+          justify-content: center;
+        }
+        .edit-link {
+          text-align: center;
+        }
+        .avatar-parent {
+          display: flex;
+          justify-content: center;
+          //flex-direction: column;
+        }
+        .tool-bar {
+          display: none;
+        }
+      }
     }
   }
 }
@@ -237,6 +357,7 @@
       .menu-icon-svg {
         display: initial !important;
       }
+
       span {
         display: none;
       }
@@ -245,26 +366,33 @@
   #login {
     padding-top: 10px;
     padding-bottom: 35px;
+
     .login-component {
       .registr-decription {
         display: none;
       }
+
       .have-accaunt {
         display: block;
       }
+
       .login-company {
         display: block;
         font-size: 11px;
       }
+
       .registr-button {
         padding-top: 10px;
+
         button {
           padding: 5px 40px;
         }
       }
+
       input, select {
         margin-bottom: 7px;
       }
+
       .block-title {
         text-align: center;
       }
@@ -284,16 +412,21 @@
   }
   #main-header {
     padding-top: 0;
+    padding-bottom: 0;
+
     .main-search-parent {
       .main-search {
         .search-input {
           padding: 3px 15px;
         }
+
         .logo-search {
-          margin-bottom: 10px ;
+          margin-bottom: 10px;
+
           img {
             width: auto !important;
           }
+
           span {
             float: right;
             display: initial;
@@ -301,18 +434,21 @@
             font-size: 15px;
             font-weight: 600;
             border-bottom: 1px solid;
-            border-bottom: 2px dotted #00c8ff;
+            border-bottom: 2px dotted $brand-color;
             margin-left: 24px;
             margin-top: 12px;
             cursor: pointer;
           }
         }
+
         div:nth-child(2) {
           border-radius: 0 !important;
+
           input {
             font-size: 16px !important;
           }
         }
+
         .watch-categories {
           display: none;
         }
@@ -320,36 +456,41 @@
     }
   }
   #interface {
-    top: 153px;
     padding-top: 5px;
+
     .content-center {
       .tool-bar {
         .searched-text {
           display: none;
         }
+
         .matches {
           display: none;
         }
+
         .toggle-button-filter {
           padding-top: 8px;
           padding-bottom: 0;
           flex-direction: column;
+
           div {
             font-size: 17px;
           }
         }
       }
+
       .searched {
-        top: 264px;
         .org {
           padding-right: 0;
           padding-left: 0;
           width: auto;
+
           .catalog-description {
             .d-flex {
               //display: block !important;
               .catalog-heading {
                 font-size: 18px;
+
                 .stars-rate {
                   line-height: 20px;
                   margin-left: 5px;
@@ -357,14 +498,55 @@
               }
             }
           }
+
           .catalog-icon {
             padding-right: 10px;
           }
         }
       }
     }
+
     .org-index {
       display: none;
+    }
+  }
+  #detailes {
+    overflow-x: hidden;
+    top: 114px !important;
+  }
+  #personal-area {
+    padding-top: 0;
+    .toggle-button-filter {
+      display: block !important;
+      text-align: center;
+      div {
+        span {
+          font-size: 17px !important;
+        }
+      }
+    }
+  }
+  .catalog-icon {
+    padding-right: 10px !important;
+
+    img {
+      width: 100%;
+    }
+  }
+  .catalog-heading {
+    font-size: 14px !important;
+  }
+  .location {
+    font-size: 12px !important;
+  }
+  .category-child {
+    font-size: 12px !important;
+  }
+  .org {
+    .catalog-description {
+      div:nth-child(3) {
+        margin-left: 0;
+      }
     }
   }
 }
@@ -372,6 +554,7 @@
 @media all and (max-width: 360px) {
   .catalog-description {
     width: auto !important;
+
     div {
       width: auto !important;
     }

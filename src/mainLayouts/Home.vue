@@ -55,7 +55,7 @@
                                 <span class="letters cursor-pointer" v-for="letter in alphabet" :key="letter.letter">{{ letter.letter }}</span>
                             </b-col>
                             <b-col class="view-all" cols="2">
-                                <span class="cursor-pointer"><i>Котегории</i></span>
+                                <router-link :to="{ name: 'category'}"><span class="cursor-pointer"><i>Котегории</i></span></router-link>
                             </b-col>
                         </b-row>
                         <b-row>
@@ -144,12 +144,14 @@
                 <div class="container mobile-catalog">
                     <div class="mobile-section">
                         <b-row>
-                            <b-col cols="12" sm="4" @click="tab1active" :class="{ active : tab1 }" class="catalog-button">
-                                <span>каталог</span>
-                            </b-col >
                             <b-col cols="12" sm="4" @click="tab2active" :class="{ active : tab2 }" class="new-orgs-button">
                                 <span>новое в справочнике</span>
                             </b-col>
+                            <b-col cols="12" sm="4" @click="tab1active" :class="{ active : tab1 }" class="catalog-button">
+                                <router-link :to="{ name: 'category' }">
+                                    <span>каталог</span>
+                                </router-link>
+                            </b-col >
                             <b-col cols="12" sm="4" class="emergancy-orgs-button ">
                                 <router-link :to="{ name: 'login-company' }">
                                     <span>Добавить команию</span>
@@ -164,7 +166,7 @@
                             </div>
                             <div class="catalog-description">
                                 <div class="catalog-heading">{{  item.heading  }}</div>
-                                <div>
+                                <div class="category-child">
                                     <span class="catalog-body cursor-pointer" v-for="desc in item.bodying.slice(0, 5)" :key="desc.name">{{ desc.name }},</span>
                                 </div>
                             </div>
@@ -525,8 +527,8 @@ export default {
                     icon: require('./../assets/icons/23.png')
                 }
             ],
-            tab1: true,
-            tab2: false,
+            tab1: false,
+            tab2: true,
             tab3: false,
         }
     },

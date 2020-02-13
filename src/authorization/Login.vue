@@ -54,9 +54,11 @@
                             вы подтверждаете, что ознакомлены и полностью согласны
                             с <span class="brand-color cursor-pointer">условиями использования сайта</span>.
                         </div>
-                        <div class="registr-button text-center">
-                            <b-button class="info-button-dark-color">Зарегестрироваться</b-button>
-                        </div>
+                        <router-link :to="{ name: 'home' }">
+                            <div class="registr-button text-center">
+                                <b-button class="info-button-dark-color">Зарегестрироваться</b-button>
+                            </div>
+                        </router-link>
                         <div class="have-accaunt text-center pt-3">
                             Вы уже зарегестрированы?
                             <router-link :to="{ path: 'signin' }">

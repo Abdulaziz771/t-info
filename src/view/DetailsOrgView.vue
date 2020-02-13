@@ -2,7 +2,7 @@
     <div id="detailes">
         <div>
             <b-row>
-                <b-col offset="0" offset-xl="2" xl="4" class="detailes">
+                <b-col cols="12" offset="0" lg="6" offset-xl="2" xl="4" class="detailes pb-4">
                     <div class="description">
                         <div class="description-title font-weight-bold">
                             {{ org.heading }}
@@ -52,19 +52,21 @@
                             <span class="cursor-pointer"><i>humo@humoavtosalon.uz</i></span>
                         </div>
                     </div>
-                    <div class="galerry d-flex">
-                        <div>
-                            <img src="./../assets/organization-imgae-format.png" class="pr-2 w-100" alt="organization-imgae">
-                        </div>
-                        <div>
-                            <img src="./../assets/organization-imgae-format.png" class="pr-2 w-100" alt="organization-imgae">
-                        </div>
-                        <div>
-                            <img src="./../assets/organization-imgae-format.png" class="pr-2 w-100" alt="organization-imgae">
-                        </div>
+                    <div class="galerry">
+                        <b-row>
+                            <b-col class="mt-2" cols="4"><div>
+                                <img src="./../assets/organization-imgae-format.png" class="pr-2 w-100" alt="organization-imgae">
+                            </div></b-col>
+                            <b-col class="mt-2" cols="4"><div>
+                                <img src="./../assets/organization-imgae-format.png" class="pr-2 w-100" alt="organization-imgae">
+                            </div></b-col>
+                            <b-col class="mt-2" cols="4"><div>
+                                <img src="./../assets/organization-imgae-format.png" class="pr-2 w-100" alt="organization-imgae">
+                            </div></b-col>
+                        </b-row>
                     </div>
                 </b-col>
-                <b-col cols="6" class="detailes-map">
+                <b-col cols="12" lg="6" class="detailes-map">
                     <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1732.0203546351786!2d69.2583783810492!3d41.281579145522095!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sru!2s!4v1580732126146!5m2!1sru!2s" class="w-100" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
                 </b-col>
             </b-row>

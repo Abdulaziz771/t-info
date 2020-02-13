@@ -1,13 +1,13 @@
 <template>
     <div id="sidebar">
         <div class="menu-list cursor-pointer">
-            <router-link :to="{ path: 'home' }"><span @click="offSidbar">О НАС</span></router-link>
+            <router-link :to="{ name: 'home' }"><span @click="offSidbar">О НАС</span></router-link>
         </div>
         <div class="menu-list cursor-pointer">
-            <router-link @click="offSidbar" :to="{ path: 'home' }"><span @click="offSidbar">реклама</span></router-link>
+            <router-link @click="offSidbar" :to="{ name: 'home' }"><span @click="offSidbar">реклама</span></router-link>
         </div>
         <div class="menu-list cursor-pointer">
-            <router-link @click="offSidbar" :to="{ path: 'home' }"><span @click="offSidbar">добавить компанию</span></router-link>
+            <router-link @click="offSidbar" :to="{ name: 'home' }"><span @click="offSidbar">добавить компанию</span></router-link>
         </div>
     </div>
 </template>

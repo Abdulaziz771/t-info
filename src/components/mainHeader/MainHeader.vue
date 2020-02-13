@@ -4,9 +4,11 @@
             <b-row class="main-search">
                 <b-col cols="12" sm="2" class="logo-search">
                     <img src="./../../assets/t-info.png">
-                    <span>
-                        Котегории
-                    </span>
+                    <router-link :to="{ name: 'category'}">
+                        <span>
+                            Котегории
+                        </span>
+                    </router-link>
                 </b-col>
                 <b-col cols="12" sm="8" class="search-input">
                     <div class="d-flex">
@@ -22,9 +24,11 @@
                     </div>
                 </b-col>
                 <b-col sm="2" class="watch-categories">
-                    <span>
-                        Котегории
-                    </span>
+                    <router-link :to="{ name: 'category'}">
+                        <span>
+                            Котегории
+                        </span>
+                    </router-link>
                 </b-col>
             </b-row>
         </div>
