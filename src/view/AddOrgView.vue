@@ -203,10 +203,12 @@
                     <div class="gallery d-flex">
                         <div v-for="(i, index) in orgPics" :key="i.orgPics" class="mr-4">
                             <input type="file" id="imageUploadOrg" ref="imageUploadOrg" @change="onChangeUploadOrgPics(index)" style="display: none" accept=".png, .jpg, .jpeg">
-                            <img v-if="i.img" :src="i.img" class="w-100 h-100 cursor-pointer">
-                            <label v-else for="imageUploadOrg">
-                                <img src="../assets/download.png" class="w-100 h-100 cursor-pointer">
+                            <label for="imageUploadOrg">
+                                <img v-if="i.img" :src="i.img" class="w-100 h-100 cursor-pointer">
                             </label>
+<!--                            <label v-else for="imageUploadOrg">-->
+<!--                                <img src="../assets/download.png" class="w-100 h-100 cursor-pointer">-->
+<!--                            </label>-->
                             <XIcon v-show="i.img" @click="onClickDeleteOrgPics(index)" class="cursor-pointer"></XIcon>
                         </div>
                     </div>
@@ -264,7 +266,7 @@
                 ],
                 orgPics: [
                     {
-                        img: null
+                        img: true
                     },
                     {
                         img: null
@@ -287,6 +289,7 @@
         },
         methods: {
             onChangeUploadAvatar () {
+
                 const file = this.$refs.imageUpload.files[0];
                 this.imgUrl = URL.createObjectURL(file);
                 this.$store.commit('chnageValueAvatarImage', this.imgUrl)
@@ -296,6 +299,7 @@
                 this.$store.commit('chnageValueAvatarImage', this.imgUrl);
             },
             onChangeUploadOrgPics(index) {
+                // debugger;
                 const file = this.$refs.imageUploadOrg.files[0];
                 this.orgPics[index].img = URL.createObjectURL(file)
             },
