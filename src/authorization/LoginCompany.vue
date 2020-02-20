@@ -45,8 +45,8 @@
                             </select>
                             <input class="info-input form-control" placeholder="Название компании">
                             <div class="contact-person">КОНТАКТНОЕ ЛИЦО</div>
-                            <input class="info-input form-control" placeholder="Имя">
-                            <input class="info-input form-control" placeholder="Фамилия">
+                            <input class="info-input form-control" v-model="name" placeholder="Имя">
+                            <input class="info-input form-control"  placeholder="Фамилия">
                             <input class="info-input form-control" placeholder="Телефон">
                             <input type="email" class="info-input form-control" placeholder="E-mail">
                             <input type="password" class="info-input form-control" placeholder="Пароль">
@@ -89,6 +89,13 @@
 <script>
 export default {
     name: 'LoginCompany',
+    created() {
+        if (JSON.parse(localStorage.getItem('auth'))) {
+            this.$store.commit('setLocalStorageBooleanValue', true)
+        } else  {
+            this.$store.commit('setLocalStorageBooleanValue', false)
+        }
+    }
 }
 </script>
 

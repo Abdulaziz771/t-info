@@ -17,6 +17,31 @@ a {
   }
 }
 
+.v-select {
+  .vs__dropdown-toggle {
+    border-radius: 10px;
+    border: 1px solid #e4e2e2;
+    input {
+      margin-top: 0 !important;
+      color: #6c757d;
+    }
+  }
+}
+
+.vs--disabled {
+  .vs__dropdown-toggle {
+    background: #e9ecef !important;
+    .vs__deselect {
+      svg {
+        fill: transparent !important;
+      }
+    }
+    .vs__search {
+      background: #e9ecef !important;
+    }
+  }
+}
+
 .container-fluid {
   max-width: 1240px !important;
   min-width: 320px !important;
@@ -523,6 +548,14 @@ a {
                     padding: 5px 20px;
                     cursor: pointer;
                     width: 133px;
+                    span {
+                      a {
+                        color: aliceblue;
+                        &:hover {
+                          color: #969da4;
+                        }
+                      }
+                    }
                   }
                 }
                 .alphabet {
@@ -552,6 +585,12 @@ a {
                         color: #595959;
                         display: list-item;
                         position: absolute;
+                      }
+                      a {
+                        color: #fff;
+                        &:hover {
+                          color: #e9e9e9;
+                        }
                       }
                     }
                   }
@@ -684,14 +723,22 @@ a {
                     .org-name {
                       font-weight: 700;
                       text-transform: uppercase;
+                      a {
+                        color: #212529;
+                        &:hover {
+                          color: $brand-color;
+                        }
+                      }
                     }
                     .org-category {
-                      font-size: 11px;
-                      margin-right: 10px;
-                      color: #969696;
-                      &:hover {
-                        border-bottom: 1px dotted $brand-color;
-                        color: black;
+                      a {
+                        font-size: 11px;
+                        margin-right: 10px;
+                        color: #969696;
+                        &:hover {
+                          border-bottom: 1px dotted $brand-color;
+                          color: black;
+                        }
                       }
                     }
                   }
@@ -1187,6 +1234,29 @@ a {
   }
   .content {
     padding-left: 70px;
+    .toggle-button-filter {
+      display: none;
+    }
+    .org-tool {
+      padding-bottom: 60px;
+      button:nth-child(1) {
+       color: black;
+        background: transparent;
+        border-color: #b5b5b5;
+        &:hover {
+          background: #d8d8d8;
+          border: 1px solid transparent;
+        }
+      }
+      button:nth-child(2) {
+        color: white;
+        border: none;
+        background: $brand-color;
+        &:hover {
+          background: #56daff;
+        }
+      }
+    }
     .edit-link {
       color: $brand-color;
       font-weight: 600;
@@ -1229,6 +1299,9 @@ a {
         }
       }
     }
+    .choose-category {
+      padding-bottom: 45px;
+    }
     .change-password-title {
       span {
         font-weight: 700;
@@ -1258,7 +1331,7 @@ a {
   }
   input, textarea, select {
     font-weight: 700;
-    margin-top: 20px !important;
+    margin-top: 20px;
   }
   .location-data {
     padding-bottom: 45px;
@@ -1301,13 +1374,17 @@ a {
     }
   }
   .gallery {
-    padding-bottom: 60px;
-    svg {
-      margin-top: 5px;
-      float: right;
-      &:hover {
-        transition: all 0.5s ease;
-        color:red;
+    padding-bottom: 30px;
+    div {
+      width: 170px;
+      height: 150px;
+      svg {
+        margin-top: 5px;
+        float: right;
+        &:hover {
+          transition: all 0.5s ease;
+          color:red;
+        }
       }
     }
   }

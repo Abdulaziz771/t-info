@@ -98,7 +98,13 @@ export default {
     },
     created() {
         var orgId = this.$route.params.id;
-        this.org = this.orgs[orgId]
+        this.org = this.orgs[orgId];
+
+        if (JSON.parse(localStorage.getItem('auth'))) {
+            this.$store.commit('setLocalStorageBooleanValue', true)
+        } else  {
+            this.$store.commit('setLocalStorageBooleanValue', false)
+        }
     }
 }
 </script>

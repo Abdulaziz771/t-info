@@ -30,12 +30,15 @@
                     <div class="login-component">
                         <div class="pb-3 block-title text-center font-weight-bold brand-color">Войти в систему</div>
                         <form action="">
-                            <input class="mb-4 info-input form-control" placeholder="Телефон или E-mail">
-                            <input class="mb-4 info-input form-control" type="password" placeholder="Пароль">
+                            <input type="text" v-model="emailORphone" @blur="$v.emailORphone.$touch()" :class="{ 'is-invalid': $v.emailORphone.$error }" class="mb-4 info-input form-control" placeholder="Телефон номер или E-mail">
+                            <input type="password" v-model="password" @blur="$v.password.$touch()" :class="{ 'is-invalid': $v.password.$error }" class="mb-4 info-input form-control"  placeholder="Пароль">
                         </form>
                         <router-link :to="{ name: 'home' }">
                             <div class="registr-button text-center">
-                                <b-button class="info-button-dark-color">Войти</b-button>
+                                <router-link v-if="!$v.emailORphone.$error && !$v.password.$error && $v.emailORphone.required && $v.password.required" :to="{ name: 'home' }">
+                                    <b-button @click="setToLocalStorage" class="info-button-dark-color">Войти</b-button>
+                                </router-link>
+                                <b-button v-else class="info-button-dark-color" disabled>Войти</b-button>
                             </div>
                         </router-link>
                         <div class="have-accaunt text-center pt-3">
@@ -44,7 +47,7 @@
                                 <span class="brand-color cursor-pointer">Регестрация</span>
                             </router-link>
                         </div>
-                        <div class="empty-inputs danger">
+                        <div class="empty-inputs danger" v-show="$v.emailORphone.$error || $v.password.$error">
                             Все поля необходимы для заполнения
                         </div>
                     </div>
@@ -63,8 +66,43 @@
 </template>
 
 <script>
+    import { required } from 'vuelidate/lib/validators'
+    import { addresORphoneNumber } from '../validators/custom-validators'
     export default {
         name: 'signin',
+        data() {
+            return {
+                emailORphone: null,
+                password: null,
+                authData: {
+                    access_token:"AO85txwkw9NSjnuyjjMGtJzj60JnEldu-beOf6_XLXoytcbYB68BjGY0gy2JBeb812RsV1ausJGc29XZzxq9Mji2YOtYCm7h2d_paHkCFWHxXtPnK47Lb_h1FKPBXTFC16S0VIAfx9NrhsbTMZedluOYRl3G7Wgcp4Hk3Wvlp6LInG4Ykf83k_v9GGk5l4FW2E_r-_h2CrbUPtP45XtgF3oLPKESFwUDoxWDDFdWvg6EMB0FWIxbopMpwtWt_1P2",
+                    expires_in: 604799,
+                    token_type:"bearer",
+                    gotat: "2020-01-15T12:19:08.266Z"
+                }
+            }
+        },
+        methods: {
+            setToLocalStorage() {
+                this.$store.commit('setToLocalStorage', this.authData)
+            }
+        },
+        validations: {
+            emailORphone: {
+                required,
+                addresORphoneNumber
+            },
+            password: {
+                required
+            }
+        },
+        created() {
+            if (JSON.parse(localStorage.getItem('auth'))) {
+                this.$store.commit('setLocalStorageBooleanValue', true)
+            } else {
+                this.$store.commit('setLocalStorageBooleanValue', false)
+            }
+        }
     }
 </script>
 

@@ -197,6 +197,27 @@ $brand-color: #00c8ff;
     height: fit-content;
     top: 0;
   }
+  #add-org {
+    .toggle-button-filter {
+      display: block;
+    }
+    .gallery {
+      flex-direction: column;
+      div {
+        width: 300px;
+        height: 280px;
+        margin-bottom: 40px;
+      }
+    }
+    .data-input {
+      .fixed-width {
+        width: -webkit-fill-available !important;
+      }
+    }
+    .info-select {
+      width: -webkit-fill-available !important;
+    }
+  }
 }
 
 @media all and (max-width: 767px) {
@@ -325,6 +346,34 @@ $brand-color: #00c8ff;
     }
   }
   #personal-area {
+    .container {
+      .personal-sidebar {
+        display: none;
+      }
+      .content {
+        padding-left: 20px;
+        .toggle-button-filter {
+          display: flex;
+          justify-content: center;
+        }
+        .edit-link {
+          text-align: center;
+        }
+        .avatar-parent {
+          display: flex;
+          justify-content: center;
+          //flex-direction: column;
+        }
+        .tool-bar {
+          display: none;
+        }
+      }
+    }
+  }
+  #add-org {
+    .toggle-button-filter {
+      display: flex !important;
+    }
     .container {
       .personal-sidebar {
         display: none;
@@ -522,6 +571,36 @@ $brand-color: #00c8ff;
       div {
         span {
           font-size: 17px !important;
+        }
+      }
+    }
+  }
+  #add-org {
+    padding-top: 0 !important;
+    .toggle-button-filter {
+      display: block !important;
+      div {
+        padding: 3px 20px;
+        text-align: center;
+        span {
+          font-size: 17px;
+        }
+      }
+    }
+    .timetable-data {
+      div {
+        flex-direction: column;
+        text-align: center;
+        .timetable-title {
+          width: 100%;
+          padding-bottom: 10px;
+          text-align: center;
+        }
+        .weeks {
+          justify-content: center;
+          .week-days {
+            padding: 5px;
+          }
         }
       }
     }

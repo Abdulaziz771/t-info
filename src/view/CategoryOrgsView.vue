@@ -40,7 +40,7 @@
                     <div class="category-list">
                         <b-row class="beauty-scroll">
                             <b-col md="6" lg="4" class="org org-list" v-for="(org, index) in sortByRate" :key="org.index">
-                                    <router-link :to="{ name: 'details-org', params: { id: index } }">
+                                    <router-link :to="{ name: 'interface-orgs', params: { id: index } }">
                                         <div class="d-flex">
                                             <div class="catalog-icon">
                                                 <img :src="require('./../assets/icons/' + org.icon)">
@@ -85,6 +85,13 @@
                 }
 
                 return curr.orgs.sort(compare).reverse();
+            }
+        },
+        created() {
+            if (JSON.parse(localStorage.getItem('auth'))) {
+                this.$store.commit('setLocalStorageBooleanValue', true)
+            } else  {
+                this.$store.commit('setLocalStorageBooleanValue', false)
             }
         }
     }

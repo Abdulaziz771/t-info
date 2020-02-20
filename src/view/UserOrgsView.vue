@@ -105,6 +105,13 @@
 
                 return curr.orgs.sort(compare).reverse();
             }
+        },
+        created() {
+            if (JSON.parse(localStorage.getItem('auth'))) {
+                this.$store.commit('setLocalStorageBooleanValue', true)
+            } else  {
+                this.$store.commit('setLocalStorageBooleanValue', false)
+            }
         }
     }
 </script>

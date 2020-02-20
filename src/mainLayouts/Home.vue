@@ -27,28 +27,34 @@
             <div class="search-component">
                 <b-tabs class="text-white">
                     <b-tab title="Поиск" active>
-                        <div class="search-panel">
-                            <div class="font-weight-bold">
-                                Я ИЩУ
+                        <form @submit.prevent="searchOrgs">
+                            <div class="search-panel">
+                                <div class="font-weight-bold">
+                                    Я ИЩУ
+                                </div>
+                                <div>
+                                    <input placeholder="Я ищу..." class="outline-none form-control info-input" type="search">
+                                </div>
+                                <div @click="searchOrgs">
+                                    <span>
+                                        <SearchIcon></SearchIcon>
+                                    </span>
+                                    <span>
+                                        Искать
+                                    </span>
+                                </div>
                             </div>
-                            <div>
-                                <input placeholder="Я ищу..." class="outline-none form-control info-input" type="search">
-                            </div>
-                            <div @click="searchOrgs">
-                                <span>
-                                    <SearchIcon></SearchIcon>
-                                </span>
-                                <span>
-                                    Искать
-                                </span>
-                            </div>
-                        </div>
+                        </form>
                     </b-tab>
                     <b-tab title="Котегория от А до Я" >
                         <b-row>
                             <b-col class="popular-button" cols="2">
                                 <div>
-                                    <span>Популярное</span>
+                                    <span>
+                                        <router-link :to="{ name: 'interface-orgs' }">
+                                            Популярное
+                                        </router-link>
+                                    </span>
                                 </div>
                             </b-col>
                             <b-col class="alphabet p-0" cols="8">
@@ -61,7 +67,11 @@
                         <b-row>
                             <b-col class="popular-points">
                                 <ul class="mb-0 pt-3 ">
-                                    <li v-for="i in items" :key="i.id" class="cursor-pointer" >{{ i.name }}</li>
+                                    <li v-for="i in items" :key="i.id" class="cursor-pointer">
+                                        <router-link :to="{ name: 'interface-orgs' }">
+                                            {{ i.name }}
+                                        </router-link>
+                                    </li>
                                 </ul>
                             </b-col>
                         </b-row>
@@ -73,28 +83,48 @@
                     <b-row class="orgs-tab">
                         <b-col cols="10">
                             <b-tabs>
-                                <b-tab title="Все организации">
+                                <b-tab title="Популярное">
                                     <b-row class="new-orgs">
-                                        <b-col lg='4' md="6" class="org cursor-pointer d-flex" v-for="(org, index) in newOrgs" :key="index">
-                                            <div class="org-image">
-                                                <img :src="org.icon">
-                                            </div>
-                                            <div class="name-category-parent">
-                                                <div class="org-name pb-1">{{ org.heading }}</div>
-                                                <span class="org-category" v-for="desc in org.bodying.slice(0, 5)" :key="desc.name">{{ desc.name }}</span>
-                                            </div>
-                                        </b-col>
+                                            <b-col lg='4' md="6" class="org cursor-pointer d-flex" v-for="(org, index) in newOrgs" :key="index">
+                                                <div class="org-image">
+                                                    <router-link :to="{ name: 'interface-orgs' }">
+                                                        <img :src="org.icon">
+                                                    </router-link>
+                                                </div>
+                                                <div class="name-category-parent">
+                                                    <div class="org-name pb-1">
+                                                        <router-link :to="{ name: 'interface-orgs' }">
+                                                        {{ org.heading }}
+                                                        </router-link>
+                                                    </div>
+                                                    <span class="org-category" v-for="desc in org.bodying.slice(0, 5)" :key="desc.name">
+                                                        <router-link :to="{ name: 'interface-orgs' }">
+                                                            {{ desc.name }}
+                                                        </router-link>
+                                                    </span>
+                                                </div>
+                                            </b-col>
                                     </b-row>
                                 </b-tab>
                                 <b-tab title="Новое в справочнике">
                                     <b-row class="new-orgs">
-                                        <b-col lg='4' md="6" class="org cursor-pointer d-flex" v-for="(org) in newOrgs.slice(0, 5)" :key="org.id">
+                                        <b-col lg='4' md="6" class="org cursor-pointer d-flex" v-for="(org, index) in newOrgs.slice(0, 5)" :key="index">
                                             <div class="org-image">
-                                                <img :src="org.icon">
+                                                <router-link :to="{ name: 'interface-orgs' }">
+                                                    <img :src="org.icon">
+                                                </router-link>
                                             </div>
                                             <div class="name-category-parent">
-                                                <div class="org-name pb-1">{{ org.heading }}</div>
-                                                <span class="org-category" v-for="desc in org.bodying.slice(0, 5)" :key="desc.id">{{ desc.name }}</span>
+                                                <div class="org-name pb-1">
+                                                    <router-link :to="{ name: 'interface-orgs' }">
+                                                        {{ org.heading }}
+                                                    </router-link>
+                                                </div>
+                                                <span class="org-category" v-for="desc in org.bodying.slice(0, 5)" :key="desc.name">
+                                                        <router-link :to="{ name: 'interface-orgs' }">
+                                                            {{ desc.name }}
+                                                        </router-link>
+                                                    </span>
                                             </div>
                                         </b-col>
                                     </b-row>
@@ -128,7 +158,7 @@
                                         <input class="info-input form-control" placeholder="Название компании">
                                     </b-col>
                                     <b-col cols="2" class="contnie-button-parent p-0">
-                                        <div class="contnie-button">
+                                        <div class="contnie-button" @click="registerCompany">
                                             <span>Продолжить</span>
                                             <ArrowRightIcon></ArrowRightIcon>
                                         </div>
@@ -551,6 +581,20 @@ export default {
         },
         searchOrgs() {
             this.$router.push({ name: 'interface-orgs' })
+        },
+        registerCompany() {
+            if (this.$store.getters.valueAccountExist) {
+                this.$router.push({ name: 'add-org' })
+            } else  {
+                this.$router.push({ name: 'login-company' })
+            }
+        }
+    },
+    created() {
+        if (JSON.parse(localStorage.getItem('auth'))) {
+            this.$store.commit('setLocalStorageBooleanValue', true)
+        } else  {
+            this.$store.commit('setLocalStorageBooleanValue', false)
         }
     }
 }

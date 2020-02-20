@@ -11,6 +11,6 @@ export default {
     name: 'main',
     components: {
         MainHeader
-    }
+    },
 }
 </script>

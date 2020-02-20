@@ -11,6 +11,6 @@ export default {
   name: 'app',
   components: {
     Head
-  }
+  },
 }
 </script>
