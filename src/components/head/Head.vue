@@ -2,7 +2,7 @@
   <div id="header">
       <b-container>
           <b-row>
-              <b-col cols="3" sm="6" class="text-left">
+              <b-col cols="6" class="text-left">
                   <div class="header-menu">
                       <XIcon v-if="showSidebar" @click="toggleSidebar" class="x-icon cursor-pointer"></XIcon>
                       <MenuIcon @click="toggleSidebar" class="menu-icon-svg" v-else ></MenuIcon>
@@ -17,7 +17,7 @@
                       </span>
                   </div>
               </b-col>
-              <b-col cols="9" sm="6" class="text-right">
+              <b-col cols="6" class="text-right">
                   <div class="header-admin-stuff">
                       <span v-if="this.$store.getters.valueLocalStorageBoolean" class="login-text-icon cursor-pointer user-date">
                         <span>
@@ -51,8 +51,8 @@
       </transition>
       <b-modal style="z-index: 999" size="md" ref="enter" class="enter" hide-footer title="ВОЙТИ В ЛИЧНЫЙ КАБИНЕТ">
           <div class="body-part">
-              <input type="text"  v-model="emailORphone" @blur="$v.emailORphone.$touch()" :class="{ 'is-invalid': $v.emailORphone.$error }" class="info-input form-control" placeholder="Email">
-              <input type="text" v-model="password" @blur="$v.password.$touch()" :class="{ 'is-invalid': $v.password.$error }" class="info-input form-control mt-3" placeholder="Пароль">
+              <input type="email"  v-model="emailORphone" @blur="$v.emailORphone.$touch()" :class="{ 'is-invalid': $v.emailORphone.$error }" class="info-input form-control" placeholder="Email">
+              <input type="password" v-model="password" @blur="$v.password.$touch()" :class="{ 'is-invalid': $v.password.$error }" class="info-input form-control mt-3" placeholder="Пароль">
               <div class="d-flex mt-2">
                   <div class="w-50 float-left">
                       <b-form-checkbox value="accepted" unchecked-value="not_accepted">
@@ -76,7 +76,7 @@
               <b-row class="register mt-3">
                   <b-col class="text-center" cols="6">
                       <router-link :to="{ name: 'login' }">
-                          <b-button @click="enterAccount"  class="w-100" variant="light">Рользователя</b-button>
+                          <b-button @click="enterAccount"  class="w-100" variant="light">Пользователя</b-button>
                       </router-link>
                   </b-col>
                   <b-col class="text-center" cols="6">
@@ -140,8 +140,11 @@ export default {
             this.showSidebar = !this.showSidebar;
         },
         enterAccount() {
-            this.$refs['enter'].toggle('#enter')
-            this.$store.commit('setToLocalStorage', this.authData)
+            this.$refs['enter'].toggle('#enter');
+            if ( !this.$v.emailORphone.$error && !this.$v.password.$error && this.$v.emailORphone.required && this.$v.password.required ) {
+                this.$store.commit('setToLocalStorage', this.authData);
+                this.$router.push({ name: 'personal-area' })
+            }
         },
     },
     created() {

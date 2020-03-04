@@ -16,3 +16,7 @@ export function  sessionFunc(to, from, next) {
 
     next();
 }
+
+export function  goBack(to, from, next) {
+    next();
+}

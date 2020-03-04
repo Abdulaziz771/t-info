@@ -5,15 +5,15 @@
                 <b-col cols="2">
                     <div class="category-left personal-sidebar">
                         <div class="category-title personal-data cursor-pointer">
-                                Компания
+                            Создать организацию
                         </div>
+<!--                        <div class="category-title personal-data cursor-pointer">-->
+<!--                            <router-link>-->
+<!--                                Счета-->
+<!--                            </router-link>-->
+<!--                        </div>-->
                         <div class="category-title personal-data cursor-pointer">
-                            <router-link :to="{ name: 'personal-area' }">
-                                Счета
-                            </router-link>
-                        </div>
-                        <div class="category-title personal-data cursor-pointer">
-                            <router-link :to="{ name: 'personal-area' }">
+                            <router-link :to="{ name: 'saved-orgs' }">
                                 Списки сохраненных
                             </router-link>
                         </div>
@@ -21,23 +21,23 @@
                 </b-col>
                 <b-col sm="12" md="10" class="content">
                     <div class="toggle-button-filter">
+<!--                        <div>-->
+<!--                            <span>-->
+<!--                                <router-link :to="{ name: 'personal-area' }">-->
+<!--                                    Счета-->
+<!--                                </router-link>-->
+<!--                            </span>-->
+<!--                        </div>-->
                         <div>
                             <span>
-                                <router-link :to="{ name: 'personal-area' }">
-                                    Счета
-                                </router-link>
-                            </span>
-                        </div>
-                        <div>
-                            <span>
-                                <router-link :to="{ name: 'personal-area' }">
+                                <router-link :to="{ name: 'saved-orgs' }">
                                     Списки сохраненных
                                 </router-link>
                             </span>
                         </div>
                         <div class="active">
                             <span>
-                                Компания
+                                Довление оргонизации
                             </span>
                         </div>
                     </div>
@@ -63,7 +63,7 @@
                             <div :class="{ 'd-flex justify-content-center' : isEditActive }">
                                 <div class="avatar">
                                     <input style="display: none" type="file" id="imageUpload" ref="imageUpload" @change="onChangeUploadAvatar" accept=".png, .jpg, .jpeg">
-                                    <img v-if="imgUrl" :src="this.$store.getters.valueavatarImg" class="rounded-circle w-100 h-100">
+                                    <img v-if="newOrg.imgUrl" :src="this.$store.getters.valueavatarImg" class="rounded-circle w-100 h-100">
                                     <img v-else src="../assets/user.png" class="rounded-circle w-100 h-100">
                                 </div>
                             </div>
@@ -80,8 +80,8 @@
                                     <option value="0">ЧП</option>
                                     <option value="1">ФЛ</option>
                                 </select>
-                                <input class="info-input form-control fixed-width" placeholder="Название компании"  :disabled="!isEditActive">
-                                <textarea class="info-input form-control" placeholder="Описание" :disabled="!isEditActive"></textarea>
+                                <input  class="info-input form-control fixed-width" v-model="newOrg.orgName" @blur="$v.newOrg.orgName.$touch()" :class="{ 'is-invalid': $v.newOrg.orgName.$error }" placeholder="Название компании" :disabled="!isEditActive">
+                                <textarea class="info-input form-control" v-model="newOrg.orgDescription" @blur="$v.newOrg.orgDescription.$touch()" :class="{ 'is-invalid': $v.newOrg.orgDescription.$error }" placeholder="Описание" :disabled="!isEditActive"></textarea>
                             </form>
                         </b-col>
                     </b-row>
@@ -92,22 +92,14 @@
                                     Относящиеся категории
                                 </div>
                             </div>
-                            <div class="edit-link mt-2">
-                                <span v-if="isDevideToCategory" @click="isDevideToCategory = !isDevideToCategory">
-                                    Назад
-                                </span>
-                                <span v-else @click="isDevideToCategory = !isDevideToCategory">
-                                    Редактировать
-                                </span>
-                            </div>
                         </b-col>
                     </b-row>
                     <b-row class="choose-category">
                         <b-col lg="12" xl="6" class="mt-3">
-                            <v-select v-model="selectedCategoriesTitle" :options="categoriesTitle" label="name" :multiple="true" :disabled="!isDevideToCategory" placeholder="Название категории"></v-select>
+                            <v-select v-model="newOrg.selectedCategoriesTitle"  :options="categoriesTitle" label="name" :multiple="true" :disabled="!isEditActive" placeholder="Название категории"></v-select>
                         </b-col>
                         <b-col lg="12" xl="6" class="mt-3">
-                            <v-select v-model="selectedCategoriesService" :options="categoriesService" label="name" :multiple="true" :disabled="!isDevideToCategory" placeholder="Услуги" ></v-select>
+                            <v-select v-model="newOrg.selectedCategoriesService" :options="categoriesService" label="name" :multiple="true" :disabled="!isEditActive" placeholder="Услуги" ></v-select>
                         </b-col>
                     </b-row>
                     <b-row>
@@ -117,26 +109,18 @@
                                     Адрес
                                 </div>
                             </div>
-                            <div class="edit-link edit-link-child mt-2">
-                                <span v-if="isLocationActive" @click="isLocationActive = !isLocationActive">
-                                    Назад
-                                </span>
-                                <span v-else @click="isLocationActive = !isLocationActive">
-                                    Редактировать
-                                </span>
-                            </div>
                         </b-col>
                     </b-row>
                     <b-row class="location-data">
                         <b-col md="12" lg="4">
-                            <input class="info-input form-control fixed-width" placeholder="Город" :disabled="!isLocationActive">
+                            <b-form-select class="info-input form-control fixed-width" :options="towns" v-model="newOrg.town" @blur="$v.newOrg.town.$touch()" :class="{ 'is-invalid': $v.newOrg.town.$error }" placeholder="Город" :disabled="!isEditActive"></b-form-select>
                         </b-col>
                         <b-col md="12" lg="4">
-                            <input class="info-input form-control fixed-width" placeholder="Район"  :disabled="!isLocationActive">
-                            <input class="info-input form-control fixed-width" placeholder="Улица"  :disabled="!isLocationActive">
+                            <b-form-select class="info-input form-control fixed-width" :options="districts" v-model="newOrg.district" @blur="$v.newOrg.district.$touch()" :class="{ 'is-invalid': $v.newOrg.district.$error }" placeholder="Район"  :disabled="!isEditActive"></b-form-select>
+                            <input class="info-input form-control fixed-width" v-model="newOrg.street" @blur="$v.newOrg.street.$touch()" :class="{ 'is-invalid': $v.newOrg.street.$error }" placeholder="Улица"  :disabled="!isEditActive">
                         </b-col>
                         <b-col md="12" lg="4">
-                            <textarea class="info-input fixed-textarea form-control" placeholder="Ориентир" :disabled="!isLocationActive"></textarea>
+                            <textarea class="info-input fixed-textarea form-control" v-model="newOrg.referencePoint" @blur="$v.newOrg.referencePoint.$touch()" :class="{ 'is-invalid': $v.newOrg.referencePoint.$error }" placeholder="Ориентир" :disabled="!isEditActive"></textarea>
                         </b-col>
                     </b-row>
                     <b-row>
@@ -146,28 +130,20 @@
                                     контакты
                                 </div>
                             </div>
-                            <div class="edit-link edit-link-child mt-2">
-                                <span v-if="isContactActive" @click="isContactActive = !isContactActive">
-                                    Назад
-                                </span>
-                                <span v-else @click="isContactActive = !isContactActive">
-                                    Редактировать
-                                </span>
-                            </div>
                         </b-col>
                     </b-row>
                     <b-row class="contacts-data">
                         <b-col md="12" lg="4">
-                            <input class="info-input form-control fixed-width" placeholder="Телефон" :disabled="!isContactActive">
-                            <input class="info-input form-control fixed-width" placeholder="Телефон 2"  :disabled="!isContactActive">
+                            <input class="info-input form-control fixed-width" v-model="newOrg.phoneNumber"  @blur="$v.newOrg.phoneNumber.$touch()" :class="{ 'is-invalid': $v.newOrg.phoneNumber.$error }" placeholder="Телефон" :disabled="!isEditActive">
+                            <input class="info-input form-control fixed-width"  v-model.trim.lazy="$v.newOrg.phoneNumber2.$model" :class="{ 'is-invalid': !$v.newOrg.phoneNumber2.phoneValidateNotimportant }" placeholder="Телефон 2"  :disabled="!isEditActive">
                         </b-col>
                         <b-col md="12" lg="4">
-                            <input class="info-input form-control fixed-width" placeholder="Телефон 3"  :disabled="!isContactActive">
-                            <input class="info-input form-control fixed-width" placeholder="Факс"  :disabled="!isContactActive">
+                            <input class="info-input form-control fixed-width" v-model.trim.lazy="$v.newOrg.phoneNumber3.$model" :class="{ 'is-invalid': !$v.newOrg.phoneNumber3.phoneValidateNotimportant }" placeholder="Телефон 3"  :disabled="!isEditActive">
+                            <input class="info-input form-control fixed-width" v-model="newOrg.fax" placeholder="Факс"  :disabled="!isEditActive">
                         </b-col>
                         <b-col md="12" lg="4">
-                            <input class="info-input form-control fixed-width" placeholder="E-mail"  :disabled="!isContactActive">
-                            <input class="info-input form-control fixed-width" placeholder="вебсайт"  :disabled="!isContactActive">
+                            <input class="info-input form-control fixed-width" v-model="newOrg.email" @blur="$v.newOrg.email.$touch()" :class="{ 'is-invalid': $v.newOrg.email.$error }" placeholder="E-mail"  :disabled="!isEditActive">
+                            <input class="info-input form-control fixed-width" v-model="newOrg.webSite" placeholder="вебсайт"  :disabled="!isEditActive">
                         </b-col>
                     </b-row>
                     <b-row>
@@ -177,14 +153,6 @@
                                     режим работы
                                 </div>
                             </div>
-                            <div class="edit-link edit-link-child mt-2">
-                                <span v-if="isTimetableActive" @click="isTimetableActive = !isTimetableActive">
-                                    Назад
-                                </span>
-                                <span v-else @click="isTimetableActive = !isTimetableActive">
-                                    Редактировать
-                                </span>
-                            </div>
                         </b-col>
                     </b-row>
                     <b-row class="timetable-data">
@@ -192,7 +160,7 @@
                             <span class="timetable-title">
                                 Режим работы:
                             </span>
-                            <span class="d-flex weeks" v-if="isTimetableActive">
+                            <span class="d-flex weeks" v-if="isEditActive">
                                 <div
                                         class="week-days cursor-pointer"
                                         :class="{ active : i.active }"
@@ -210,14 +178,19 @@
                                 </div>
                             </span>
                         </b-col>
+                        <b-row v-if="weeksLogic" class="pb-0 pl-3">
+                            <b-col cols="12" class="pb-0">
+                                <div class="text-danger font-weight-bold">Вы должны отметить хотябы один рабочий день</div>
+                            </b-col>
+                        </b-row>
                         <b-col cols="12" class="d-flex">
                             <span class="timetable-title">
                                 Время работы:
                             </span>
                             <span class="work-start-over">
-                                <the-mask :disabled="!isTimetableActive" type="text" mask="##:##" class="info-input form-control" placeholder="00:00"/>
+                                <the-mask :disabled="!isEditActive" type="text" mask="##:##" v-model="day.beginWork" @blur.native="$v.day.beginWork.$touch()" :class="{ 'is-invalid': $v.day.beginWork.$error }" class="info-input form-control" placeholder="00:00"/>
                                 -
-                                <the-mask :disabled="!isTimetableActive" type="text" mask="##:##" class="info-input form-control" placeholder="00:00"/>
+                                <the-mask :disabled="!isEditActive" type="text" mask="##:##" v-model="day.endWork" @blur.native="$v.day.endWork.$touch()" :class="{ 'is-invalid': $v.day.endWork.$error }" class="info-input form-control" placeholder="00:00"/>
                             </span>
                         </b-col>
                         <b-col cols="12" class="d-flex " >
@@ -225,9 +198,9 @@
                                 Обед:
                             </span>
                             <span class="work-start-over">
-                                <the-mask :disabled="!isTimetableActive" type="text" mask="##:##" class="info-input form-control" placeholder="00:00"/>
+                                <the-mask :disabled="!isEditActive" type="text" mask="##:##" v-model="day.beginLunch" @blur.native="$v.day.beginLunch.$touch()" :class="{ 'is-invalid': $v.day.beginLunch.$error }" class="info-input form-control" placeholder="00:00"/>
                                 -
-                                <the-mask :disabled="!isTimetableActive" type="text" mask="##:##" class="info-input form-control" placeholder="00:00"/>
+                                <the-mask :disabled="!isEditActive" type="text" mask="##:##" v-model="day.endLunch" @blur.native="$v.day.endLunch.$touch()" :class="{ 'is-invalid': $v.day.endLunch.$error }" class="info-input form-control" placeholder="00:00"/>
                             </span>
                         </b-col>
                     </b-row>
@@ -252,8 +225,19 @@
                     </div>
                     <b-row class="org-tool">
                         <b-col cols="12" class="text-right">
-                            <b-button class="save">Сохранить</b-button>
-                            <b-button class="publication ml-3">Опубликовать компанию</b-button>
+                            <b-button @click="goBackRouter" class="btn-danger mr-3">Отменить</b-button>
+                            <b-button v-if="allowTosave" class="save">
+                                Сохранить
+                            </b-button>
+                            <b-button v-else class="save" disabled>
+                                Сохранить
+                            </b-button>
+                            <b-button v-if="allowTosave" class="publication ml-3">
+                                Опубликовать компанию
+                            </b-button>
+                            <b-button v-else class="publication ml-3" disabled>
+                                Опубликовать компанию
+                            </b-button>
                         </b-col>
                     </b-row>
                 </b-col>
@@ -263,21 +247,18 @@
 </template>
 
 <script>
-    import 'vue-select/dist/vue-select.css';
+    import 'vue-select/dist/vue-select.css'
+    import { phoneValidate, phoneValidateNotimportant } from '../validators/custom-validators'
+    import { required, email } from 'vuelidate/lib/validators'
     import {
         XIcon
     } from 'vue-feather-icons'
+    import router from "../routes/router";
     export default {
         name: 'add-org',
         data() {
             return {
-                isEditActive: false,
-                isLocationActive: false,
-                isContactActive: false,
-                isTimetableActive: false,
-                isDevideToCategory: false,
-                imgUrl: null,
-                selectedCategoriesService: null,
+                isEditActive: true,
                 categoriesService: [
                     { name: 'Автозаправочные станции' },
                     { name: 'Акустические системы' },
@@ -289,7 +270,6 @@
                     { name: 'Автомобили - комплексные пункты техобслуживания' },
                     { name: 'Автомобили - кондиционеры' },
                 ],
-                selectedCategoriesTitle: null,
                 categoriesTitle: [
                     { name: 'Автомобили'},
                     { name: 'Иностранные компании'},
@@ -299,6 +279,42 @@
                     { name: 'Бытовые услуги' },
                     { name: 'Гостиницы и туризм'},
                 ],
+                towns: [
+                    { text: 'Выберите город', disabled: true },
+                    { text: 'Ташкент'},
+                    { text: 'Ташкентская область'},
+                    { text: 'Андижанская область'},
+                    { text: 'Бухарская область'},
+                    { text: 'Джизакская область'},
+                    { text: 'Кашкадарьинская область'},
+                    { text: 'Навоийская область'},
+                    { text: 'Самаркандская область'},
+                    { text: 'Сурхандарьинская область'},
+                    { text: 'Сырдарьинская область'},
+                    { text: 'Ферганская область'},
+                    { text: 'Хорезмская область'},
+                    { text: 'Республика Каракалпакстан'}
+                ],
+                districts: [
+                    { text: 'Выберите район', disabled: true },
+                    { text: 'Сергелийский район'},
+                    { text: 'Мирзо-Улугбекский район'},
+                    { text: 'Мирабадский район'},
+                    { text: 'Бектемирский район'},
+                    { text: 'Алмазарский (ранее Сабир-Рахимовский)'},
+                    { text: 'Яшнободский (ранее Хамзинский)'},
+                    { text: 'Юнусабадский район'},
+                    { text: 'Учтепинский район'},
+                    { text: 'Шайхантахурский район'},
+                    { text: 'Чиланзарский район'},
+                    { text: 'Яккасарайский район'}
+                ],
+                day: {
+                    beginWork: null,
+                    endWork: null,
+                    beginLunch: null,
+                    endLunch: null,
+                },
                 weeks: [
                     {
                         title: 'ПН',
@@ -334,6 +350,23 @@
                         img: null
                     }
                 ],
+                newOrg: {
+                    imgUrl: null,
+                    selectedCategoriesService: null,
+                    orgName: null,
+                    orgDescription: null,
+                    selectedCategoriesTitle: null,
+                    town: 'Выберите город',
+                    district: 'Выберите район',
+                    street: null,
+                    referencePoint: null,
+                    phoneNumber: null,
+                    phoneNumber2: null,
+                    phoneNumber3: null,
+                    fax: null,
+                    email: null,
+                    webSite: null
+                }
             }
         },
         components: {
@@ -342,12 +375,12 @@
         methods: {
             onChangeUploadAvatar () {
                 const file = this.$refs.imageUpload.files[0];
-                this.imgUrl = URL.createObjectURL(file);
-                this.$store.commit('chnageValueAvatarImage', this.imgUrl)
+                this.newOrg.imgUrl = URL.createObjectURL(file);
+                this.$store.commit('chnageValueAvatarImage', this.newOrg.imgUrl)
             },
             onClickDeleteAvatar () {
-                this.imgUrl = null;
-                this.$store.commit('chnageValueAvatarImage', this.imgUrl);
+                this.newOrg.imgUrl = null;
+                this.$store.commit('chnageValueAvatarImage', this.newOrg.imgUrl);
             },
             onChangeUploadOrgPics(index, event) {
                 const file = event.target.files[0];
@@ -362,6 +395,90 @@
                 this.orgPics[index].img = null;
                 this.$delete(this.orgPics, index)
             },
+            goBackRouter() {
+                router.back()
+            }
+        },
+        computed: {
+            weeksLogic() {
+                let filteredWeeksArray = this.weeks.filter(day => day.active == false);
+                if (filteredWeeksArray.length == 7) return true; else return false
+            },
+            allowTosave() {
+                if (
+                    this.$v.newOrg.orgName.required &&
+                    this.$v.newOrg.orgDescription.required &&
+                    this.newOrg.selectedCategoriesService &&
+                    this.newOrg.selectedCategoriesTitle &&
+                    this.$v.newOrg.referencePoint.required &&
+                    !this.$v.newOrg.town.townFunc &&
+                    !this.$v.newOrg.town.districtFunc &&
+                    this.$v.newOrg.street.required &&
+                    !this.$v.newOrg.phoneNumber.$error &&
+                    this.$v.newOrg.phoneNumber2.phoneValidateNotimportant &&
+                    this.$v.day.beginWork.required &&
+                    this.$v.day.endWork.required &&
+                    this.$v.day.beginLunch.required &&
+                    this.$v.day.endLunch.required &&
+                    !this.weeksLogic
+                ) return true; else return false
+            }
+        },
+        validations: {
+            newOrg: {
+                orgName: {
+                    required
+                },
+                orgDescription: {
+                    required
+                },
+                town: {
+                    required,
+                    townFunc: function (val) {
+                        if (val === "Выберите город") return true; else return false
+                    }
+                },
+                district: {
+                    required,
+                    districtFunc: function (val) {
+                        if (val === "Выберите район") return true; else return false
+                    }
+                },
+                street: {
+                    required
+                },
+                referencePoint: {
+                    required
+                },
+                phoneNumber: {
+                    phoneValidate
+                },
+                phoneNumber2: {
+                    phoneValidate,
+                    phoneValidateNotimportant,
+                },
+                phoneNumber3: {
+                    phoneValidate,
+                    phoneValidateNotimportant
+                },
+                email: {
+                    email
+                }
+            },
+            day: {
+                beginWork: {
+                    required
+                },
+                endWork: {
+                    required
+                },
+                beginLunch: {
+                    required
+                },
+                endLunch: {
+                    required
+                },
+            }
         },
         created() {
             if (JSON.parse(localStorage.getItem('auth'))) {
@@ -372,3 +489,11 @@
         }
     }
 </script>
+
+<style>
+    .btn-danger {
+        color: #fff !important;
+        background-color: #dc3545 !important;
+        border-color: #dc3545 !important;
+    }
+</style>

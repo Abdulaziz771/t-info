@@ -172,11 +172,14 @@ $brand-color: #00c8ff;
     }
   }
   #detailes {
-    position: absolute;
-    top: 103px;
+    padding-top: 25px;
+    background: white;
+    top: 142px;
     left: 0;
     right: 0;
-
+    bottom: 0;
+    position: absolute;
+    overflow: scroll;
     .detailes {
       top: 320px;
       bottom: 0;
@@ -270,6 +273,9 @@ $brand-color: #00c8ff;
 
         .mobile-section {
           display: block;
+          div {
+            margin: 0 auto;
+          }
         }
       }
     }
@@ -406,9 +412,14 @@ $brand-color: #00c8ff;
       .menu-icon-svg {
         display: initial !important;
       }
-
       span {
         display: none;
+      }
+      span:nth-child(4) {
+        display: initial;
+        font-size: 8px;
+        text-transform: uppercase;
+        padding-left: 9px;
       }
     }
   }
@@ -602,6 +613,13 @@ $brand-color: #00c8ff;
             padding: 5px;
           }
         }
+      }
+    }
+    .org-tool {
+      button {
+        width: 100%;
+        margin-top: 20px;
+        margin-left: 0 !important;
       }
     }
   }

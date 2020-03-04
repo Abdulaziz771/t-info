@@ -85,6 +85,12 @@ const router = new Router({
                     meta: { requiresAuth: true },
                 },
                 {
+                    path: '/saved-orgs',
+                    name: 'saved-orgs',
+                    component: () => import('../view/SavedOrgsListView'),
+                    meta: { requiresAuth: true },
+                },
+                {
                     path: '/add-org',
                     name: 'add-org',
                     component: () => import('../view/AddOrgView'),

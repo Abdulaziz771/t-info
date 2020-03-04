@@ -2,7 +2,7 @@
     <div id="detailes">
         <div>
             <b-row>
-                <b-col cols="12" offset="0" lg="6" offset-xl="2" xl="4" class="detailes pb-4">
+                <b-col cols="12" offset="0" lg="6" offset-xl="2" xl="4" class="detailes beauty-scroll pb-4">
                     <div class="description">
                         <div class="description-title font-weight-bold">
                             {{ org.heading }}
@@ -53,17 +53,7 @@
                         </div>
                     </div>
                     <div class="galerry">
-                        <b-row>
-                            <b-col class="mt-2" cols="4"><div>
-                                <img src="./../assets/organization-imgae-format.png" class="pr-2 w-100" alt="organization-imgae">
-                            </div></b-col>
-                            <b-col class="mt-2" cols="4"><div>
-                                <img src="./../assets/organization-imgae-format.png" class="pr-2 w-100" alt="organization-imgae">
-                            </div></b-col>
-                            <b-col class="mt-2" cols="4"><div>
-                                <img src="./../assets/organization-imgae-format.png" class="pr-2 w-100" alt="organization-imgae">
-                            </div></b-col>
-                        </b-row>
+                        <VuePictureSwipe class="overflow-hidden" :items="orgPics"></VuePictureSwipe>
                     </div>
                 </b-col>
                 <b-col cols="12" lg="6" class="detailes-map">
@@ -75,6 +65,7 @@
 </template>
 
 <script>
+import VuePictureSwipe from 'vue-picture-swipe';
 import StarRating from 'vue-star-rating';
 import org from '../../public/data/org'
 import {
@@ -87,14 +78,20 @@ export default {
     data() {
         return {
             orgs: org,
-            org: null
+            org: null,
+            orgPics: [
+                { src: require('../assets/comp-pic-1.png'),thumbnail: require('../assets/comp-pic-1.png'),w: 600,h: 400, title: 'Nestle'},
+                { src: require('../assets/comp-pic-2.png'),thumbnail: require('../assets/comp-pic-2.png'),w: 600,h: 400, title: 'Nestle'},
+                { src: require('../assets/comp-pic-1.png'),thumbnail: require('../assets/comp-pic-1.png'),w: 600,h: 400, title: 'Nestle'},
+            ]
         }
     },
     components: {
         MapPinIcon,
         StarRating,
         PhoneIcon,
-        MailIcon
+        MailIcon,
+        VuePictureSwipe: VuePictureSwipe
     },
     created() {
         var orgId = this.$route.params.id;

@@ -87,9 +87,7 @@
                                     <b-row class="new-orgs">
                                             <b-col lg='4' md="6" class="org cursor-pointer d-flex" v-for="(org, index) in newOrgs" :key="index">
                                                 <div class="org-image">
-                                                    <router-link :to="{ name: 'interface-orgs' }">
-                                                        <img :src="org.icon">
-                                                    </router-link>
+                                                    <img :src="org.icon">
                                                 </div>
                                                 <div class="name-category-parent">
                                                     <div class="org-name pb-1">
@@ -174,22 +172,25 @@
                 <div class="container mobile-catalog">
                     <div class="mobile-section">
                         <b-row>
-                            <b-col cols="12" sm="4" @click="tab2active" :class="{ active : tab2 }" class="new-orgs-button">
+                            <b-col cols="12" sm="4" class="new-orgs-button active">
                                 <span>новое в справочнике</span>
                             </b-col>
-                            <b-col cols="12" sm="4" @click="tab1active" :class="{ active : tab1 }" class="catalog-button">
-                                <router-link :to="{ name: 'category' }">
-                                    <span>каталог</span>
+                            <b-col cols="12" class="catalog-button">
+                                <router-link :to="{ name: 'category' }" class="w-100">
+                                    <span>
+                                        каталог
+                                    </span>
                                 </router-link>
-                            </b-col >
-                            <b-col cols="12" sm="4" class="emergancy-orgs-button ">
-                                <router-link :to="{ name: 'login-company' }">
-                                    <span>Добавить команию</span>
-                                </router-link>
+                            </b-col>
+                            <b-col cols="12" sm="4" class="emergancy-orgs-button">
+                                <span @click="registerCompany">Добавить команию</span>
                             </b-col>
                         </b-row>
                     </div>
                     <div class="catalog-parent">
+                        <router-link :to="{ name: '' }">
+
+                        </router-link>
                         <div v-show="tab1" class="catalog-list" v-for="item in catalog" :key="item.id">
                             <div class="catalog-icon">
                                 <img :src="item.icon">
@@ -567,28 +568,17 @@ export default {
         ArrowRightIcon
     },
     methods: {
-        tab2active() {
-            this.tab1 = this.tab3 = false;
-            this.tab2 = true
-        },
-        tab1active() {
-            this.tab2 = this.tab3 = false;
-            this.tab1 = true
-        },
-        tab3active() {
-            this.tab2 = this.tab1 = false;
-            this.tab3 = true
-        },
         searchOrgs() {
             this.$router.push({ name: 'interface-orgs' })
         },
         registerCompany() {
+            debugger
             if (this.$store.getters.valueAccountExist) {
                 this.$router.push({ name: 'add-org' })
             } else  {
                 this.$router.push({ name: 'login-company' })
             }
-        }
+        },
     },
     created() {
         if (JSON.parse(localStorage.getItem('auth'))) {

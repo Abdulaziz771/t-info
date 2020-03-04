@@ -3,27 +3,32 @@
         <div class="container">
             <b-row>
                 <b-col class="category-left personal-sidebar" cols="2">
-                    <div class="category-title personal-data  cursor-pointer">
-                        <router-link :to="{ name: 'personal-area' }">
-                            Личный кабинет
+                    <div class="category-title personal-data cursor-pointer">
+                        <router-link :to="{ name: 'add-org' }">
+                            Создать организацию
                         </router-link>
                     </div>
+<!--                    <div class="category-title personal-data cursor-pointer">-->
+<!--                        <router-link>-->
+<!--                            Счета-->
+<!--                        </router-link>-->
+<!--                    </div>-->
                     <div class="category-title personal-data cursor-pointer">
-                        Список организаций
+                        Списки сохраненных
                     </div>
                 </b-col>
                 <b-col class="content" md="10" cols="12">
                     <div class="toggle-button-filter">
-                        <div>
-                            <span>
-                                <router-link :to="{ name: 'personal-area' }">
-                                    Личный кабинет
-                                </router-link>
-                            </span>
-                        </div>
                         <div class="active">
                             <span>
-                                Список компанией
+                                Список сохраненных
+                            </span>
+                        </div>
+                        <div>
+                            <span>
+                                <router-link :to="{ name: 'add-org' }">
+                                    Довление оргонизации
+                                </router-link>
                             </span>
                         </div>
                     </div>
@@ -47,9 +52,6 @@
                                         <div class="catalog-description">
                                             <div class="d-flex">
                                                 <div class="catalog-heading"><span class="mr-2 org-index">{{ index + 1  }}</span>    {{  org.heading  }}</div>
-                                                <div class="stars-rate">
-                                                    <star-rating :show-rating="false" :rating="org.rate" :read-only="true" ></star-rating>
-                                                </div>
                                             </div>
                                             <div class="location">
                                                 <MapPinIcon></MapPinIcon>
@@ -77,7 +79,7 @@
 
 <script>
     import org from './../../public/data/org';
-    import StarRating from 'vue-star-rating';
+    // import StarRating from 'vue-star-rating';
     import {
         MapPinIcon
     } from 'vue-feather-icons'
@@ -89,7 +91,6 @@
             }
         },
         components: {
-            StarRating,
             MapPinIcon,
         },
         computed: {

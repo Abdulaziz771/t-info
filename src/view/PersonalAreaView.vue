@@ -65,8 +65,25 @@
                             <form>
                                 <input class="info-input form-control" v-model="name" @blur="$v.name.$touch()" :class="{ 'is-invalid': $v.name.$error }" :disabled="!isEditActive">
                                 <input class="info-input form-control" v-model="shurename" @blur="$v.shurename.$touch()" :class="{ 'is-invalid': $v.shurename.$error }" :disabled="!isEditActive">
-                                <input class="info-input form-control" v-model="phoneNumber" @blur="$v.phoneNumber.$touch()" :class="{ 'is-invalid': $v.phoneNumber.$error }" :disabled="!isEditActive">
-                                <input class="info-input form-control" v-model="emailAddres" @blur="$v.emailAddres.$touch()" :class="{ 'is-invalid': $v.emailAddres.$error }" :disabled="!isEditActive">
+                                <div class="input-group">
+                                    <input class="info-input form-control" v-model="phoneNumber" @blur="$v.phoneNumber.$touch()" :class="{ 'is-invalid': $v.phoneNumber.$error }" :disabled="!isEditActive">
+                                    <div class="input-group-append" v-if="confirmRecentPhoneData">
+                                        <button class="btn btn-secondary"  type="button" disabled>Подтвердить</button>
+                                    </div>
+                                    <div v-else class="input-group-append" >
+                                        <button class="btn btn-secondary"  type="button" @click="sendCodeConfirm('phoneCode')">Подтвердить</button>
+                                    </div>
+
+                                </div>
+                                <div class="input-group">
+                                    <input class="info-input form-control" v-model="emailAddres" @blur="$v.emailAddres.$touch()" :class="{ 'is-invalid': $v.emailAddres.$error }" :disabled="!isEditActive">
+                                    <div v-if="confirmRecentEmailData" class="input-group-append">
+                                        <button class="btn btn-secondary" type="button" disabled>Подтвердить</button>
+                                    </div>
+                                    <div v-else class="input-group-append">
+                                        <button class="btn btn-secondary" type="button"  @click="sendCodeConfirm('emailCode')">Подтвердить</button>
+                                    </div>
+                                </div>
                             </form>
                         </b-col>
                     </b-row>
@@ -74,29 +91,58 @@
                         <span>сменить пароль</span>
                         <b-row class="change-pasword">
                             <b-col xl="4" lg="6" cols="12">
-                                <input type="password" class="info-input form-control" v-model="currentPassword" @blur="$v.name.$touch()" :class="{ 'is-invalid': $v.name.$error }" placeholder="Текущщий пароль">
+                                <input type="password" class="info-input form-control" v-model.trim.lazy="$v.currentPassword.$model"  :class="{ 'is-invalid': !$v.currentPassword.checkPassword && $v.currentPassword.required }" placeholder="Текущщий пароль">
                             </b-col>
-                            <b-col xl="5" lg="6" cols="12">
-                                <input type="password" class="info-input form-control" v-model="password" @blur="$v.name.$touch()" :class="{ 'is-invalid': $v.name.$error }" placeholder="Новый пароль">
-                            </b-col>
-                            <b-col cols="12" offset-lg="6" lg="6" offset-xl="4" xl="5">
-                                <input type="password" class="info-input form-control" v-model="passwordConfirm" @blur="$v.name.$touch()" :class="{ 'is-invalid': $v.name.$error }" placeholder="Повторить новый пароль">
-                            </b-col>
+                            <template v-if="$v.currentPassword.checkPassword">
+                                <b-col xl="5" lg="6" cols="12">
+                                    <input type="password" class="info-input form-control" v-model="password" @blur="$v.password.$touch()" :class="{ 'is-invalid': $v.password.$error }" placeholder="Новый пароль">
+                                </b-col>
+                                <b-col cols="12" offset-lg="6" lg="6" offset-xl="4" xl="5">
+                                    <input type="password" class="info-input form-control" v-model="passwordConfirm" @blur="$v.passwordConfirm.$touch()" :class="{ 'is-invalid': $v.passwordConfirm.$error }" placeholder="Повторить новый пароль">
+                                </b-col>
+                            </template>
                         </b-row>
                     </div>
-                    <div class="save pt-5 pb-5" v-if="isEditActive" @click="isEditActive = !isEditActive">
-                        <b-button variant="outline-secondary">Сохранить</b-button>
-                        <b-button variant="outline-secondary" disabled>Сохранить</b-button>
+                    <div class="save pt-5 pb-5" v-if="isEditActive" >
+                        <b-button v-if="allowToSavePersonalArea" @click="isEditActive = !isEditActive" variant="outline-secondary">Сохранить</b-button>
+                        <b-button v-else variant="outline-secondary" disabled>Сохранить</b-button>
                     </div>
                 </b-col>
-                <h1 v-if="sd2">asd</h1>
             </b-row>
         </div>
+        <b-modal style="z-index: 999" size="md" ref="phoneCode" class="enter" hide-footer title="Подтверждения телефон номер">
+            <div class="body-part">
+                <div class="codeConfirm text-center">Введите код подтверждение от правленный по этому адресу: <b>{{ this.phoneNumber }}</b></div>
+                <input type="text" class="info-input form-control" placeholder="Введите код подтверждение">
+            </div>
+            <div class="footer-part">
+                <b-row>
+                    <b-col cols="12">
+                        <b-button @click="sendCodeConfirm('phoneCode')" class="save">Назад</b-button>
+                        <b-button @click="sendCodeConfirm('phoneCode')" class="publication ml-3">Принять</b-button>
+                    </b-col>
+                </b-row>
+            </div>
+        </b-modal>
+        <b-modal style="z-index: 999" size="md" ref="emailCode" class="enter" hide-footer title="Подтверждения Email аддреса">
+            <div class="body-part">
+                <div class="codeConfirm text-center">Введите код подтверждение от правленный по этому адресу:<b>{{ this.emailAddres }}</b></div>
+                <input type="text" class="info-input form-control" placeholder="Введите код подтверждение">
+            </div>
+            <div class="footer-part">
+                <b-row>
+                    <b-col cols="12">
+                        <b-button @click="sendCodeConfirm('emailCode')" class="save">Назад</b-button>
+                        <b-button @click="sendCodeConfirm('emailCode')" class="publication ml-3">Принять</b-button>
+                    </b-col>
+                </b-row>
+            </div>
+        </b-modal>
     </div>
 </template>
 
 <script>
-    import {email, required } from "vuelidate/lib/validators";
+    import {email, required, sameAs } from "vuelidate/lib/validators";
     import { phoneValidate } from "../validators/custom-validators";
     export default {
         name: 'personal-area',
@@ -110,16 +156,41 @@
                 emailAddres: 'mariya@gmail.ru',
                 currentPassword: null,
                 password: null,
-                isPasswordRight: null,
-                passwordConfirm: null
+                passwordConfirm: null,
+                testPassword: 11,
             }
         },
         computed: {
-            // sd2() {
-            //     if (this.currentPassword == 'aa') {
-            //         return
-            //     }
-            // }
+            allowToSavePersonalArea() {
+                if (
+                    !this.$v.name.$error &&
+                    this.$v.name.required &&
+                    !this.$v.shurename.$error &&
+                    this.$v.shurename.required &&
+                    !this.$v.phoneNumber.$error &&
+                    this.$v.phoneNumber.required &&
+                    !this.$v.emailAddres.$error &&
+                    !(!this.$v.currentPassword.checkPassword && this.$v.currentPassword.required) &&
+                    !this.$v.passwordConfirm.$error
+                ) return true;
+                else return false
+            },
+            confirmRecentPhoneData() {
+               if (this.phoneNumber != +998998315081) {
+                    if (!this.$v.phoneNumber.$error) {
+                        return false
+                    } else return true
+               } else return true
+            },
+            confirmRecentEmailData() {
+                if (this.emailAddres != 'mariya@gmail.ru') {
+                    if (!this.$v.emailAddres.$error) {
+                        return false
+                    } else return true
+                } else  {
+                    return true
+                }
+            }
         },
         methods: {
             onChangeUploadAvatar () {
@@ -130,6 +201,9 @@
             onClickDeleteAvatar () {
                 this.imgUrl = null;
                 this.$store.commit('chnageValueAvatarImage', this.imgUrl);
+            },
+            sendCodeConfirm(text) {
+                this.$refs[text].toggle('#enter')
             },
         },
         validations: {
@@ -145,6 +219,20 @@
             },
             phoneNumber: {
                 phoneValidate,
+                required
+            },
+            currentPassword: {
+                checkPassword(val) {
+                    if (val == this.testPassword) {
+                        return true
+                    } else return false
+                },
+                required
+            },
+            password: {
+            },
+            passwordConfirm: {
+                sameAsPassword: sameAs('password')
             },
         },
         created() {
@@ -156,3 +244,35 @@
         }
     }
 </script>
+
+<style scoped lang="scss">
+    .codeConfirm {
+        font-size: 15px;
+        font-weight: 500;
+        margin-bottom: 20px;
+    }
+
+    .footer-part {
+        padding-top: 25px;
+        text-align: right;
+        button:nth-child(1) {
+            font-size: 11px;
+            color: black;
+            background: transparent;
+            border-color: #b5b5b5;
+            &:hover {
+                background: #d8d8d8;
+                border: 1px solid transparent;
+            }
+        }
+        button:nth-child(2) {
+            font-size: 12px;
+            color: white;
+            border: none;
+            background:#00C8FF;
+            &:hover {
+                background: #56daff;
+            }
+        }
+    }
+</style>

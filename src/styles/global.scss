@@ -301,7 +301,7 @@ a {
     right: 0;
     top: 0;
     z-index: 99;
-    height: 40px;
+    height: 43px;
     background: black;
     color: $default-color-with-black-background;
     .header-menu {
@@ -970,12 +970,12 @@ a {
 #detailes {
   padding-top: 25px;
   background: white;
-  position: fixed;
-  top: 143px;
+  top: 103px;
   left: 0;
   right: 0;
   bottom: 0;
-  overflow-y: scroll;
+  position: absolute;
+  overflow: scroll;
   .detailes-map {
     height: 100%;
     top: 0;
@@ -992,7 +992,6 @@ a {
     top: 25px;
     bottom: 0;
     left: 0;
-    overflow: auto;
     .description {
       .description-title {
         font-size: 23px;
@@ -1058,6 +1057,17 @@ a {
           &:hover {
             text-decoration: underline;
           }
+        }
+      }
+    }
+    .galerry {
+      .my-gallery {
+        display: flex;
+        width: 95%;
+        position: absolute;
+        padding-bottom: 30px;
+        img {
+          width: 100%;
         }
       }
     }
@@ -1139,6 +1149,14 @@ a {
         }
         .fixed-width {
           width: 300px;
+        }
+        .input-group {
+          .input-group-append {
+            margin-top: 20px;
+            button {
+              font-size: 13px;
+            }
+          }
         }
       }
     }
